@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: {type: String,require:true},
   picPath:String,
   email:{type:String,required:true},
-  albums:{type:[Schema.ObjectId],required:true},
+  albums:{type:[Schema.ObjectId]},
 },{
   timestamps: {
     createdAt: 'created_at',
