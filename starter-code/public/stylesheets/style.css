@@ -224,4 +224,31 @@ form.login a:hover {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600; }
 
+#flex-Photos {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
+#card {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 20px 0;
+  text-align: center; }
+  #card img {
+    height: 500px;
+    object-fit: cover; }
+  #card p {
+    margin: 20px 0; }
+  #card button {
+    width: 5%;
+    margin: 0 auto;
+    background: #272727;
+    border-radius: 100px;
+    color: white; }
+
+img {
+  max-width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
