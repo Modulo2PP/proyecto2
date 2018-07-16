@@ -220,3 +220,14 @@ form.login a:hover
     flex-direction: row;
     list-style: none;
 }
+
+#barraNavegacion{
+    background-color: rgb(39, 39, 39);
+    height: 60px;
+}
+
+#barraNavegacion a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}

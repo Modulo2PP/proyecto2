@@ -180,4 +180,13 @@ form.login a:hover {
   flex-direction: row;
   list-style: none; }
 
+#barraNavegacion {
+  background-color: #272727;
+  height: 60px; }
+
+#barraNavegacion a {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600; }
+
 /*# sourceMappingURL=style.css.map */
