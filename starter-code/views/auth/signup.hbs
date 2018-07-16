@@ -1,25 +1,42 @@
-<!-- views/auth/signup.hbs -->
-<h2>Signup</h2>
+<script src="/javascripts/auth.js"></script>
+<div class=" body-auth">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pr-wrap">
+        <div class="pass-reset">
+          <label>
+            Enter the email you signed up with</label>
+          <input type="email" placeholder="Email" />
+          <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="form-title">
+          Sign Up</p>
+        <form class="login" action="/auth/signup" method="post">
+          <input type="text" name="username" placeholder="Username" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="password" name="password" placeholder="Password" />
+          <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+          <div class="remember-forgot">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" /> Remember Me
+                  </label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <p class="account-message">
+            Do you have an account?
+            <a href="/auth/login">Log in</a>
+          </p>
+        </form>
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/auth/login">Login</a>
-  </p>
-</form>
+      </div>
+    </div>
+  </div>
+</div>

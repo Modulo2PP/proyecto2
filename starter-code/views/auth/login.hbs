@@ -1,25 +1,43 @@
+<script src="/javascripts/auth.js"></script>
+<div class=" body-auth">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pr-wrap">
+        <div class="pass-reset">
+          <label>
+            Enter the email you signed up with</label>
+          <input type="email" placeholder="Email" />
+          <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="form-title">
+          Log In</p>
+        <form class="login" action="/auth/login" method="post">
+          <input type="text" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <input type="submit" value="Log In" class="btn btn-success btn-sm" />
+          <div class="remember-forgot">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" /> Remember Me
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 forgot-pass-content">
+                <a href="javascription:void(0)" class="forgot-pass">Forgot Password</a>
+              </div>
+            </div>
+          </div>
+          <p class="account-message">
+            Don't you have an account?
+            <a href="/auth/signup">Sign up</a>
+          </p>
+        </form>
 
-<h2>Login</h2>
-
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
-
-  <br><br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <br><br>
-
-  <button>Login</button>
-
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/login">Signup</a>
-  </p>
-</form>
+      </div>
+    </div>
+  </div>
+</div>
