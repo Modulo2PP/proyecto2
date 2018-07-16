@@ -256,3 +256,14 @@ border-bottom-left-radius: 4px;
 .col-md-8 > *{
 height: 70px;
 }
+
+#barraNavegacion{
+    background-color: rgb(39, 39, 39);
+    height: 60px;
+}
+
+#barraNavegacion a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
