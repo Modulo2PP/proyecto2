@@ -12,25 +12,24 @@ mongoose.connect(dburl).then(() => console.log(`Connected to: ${dburl} DB`));
 const salt = bcrypt.genSaltSync(bcryptSalt);
 const hashedPass = bcrypt.hashSync(`1111`, salt);
 
+User.collection.drop()
+
 User.create([
   {
     username: `Pedro`,
     password: hashedPass,
-    picPath: "",
     email: `pedro@pedro.com`,
     albums: []
   },
   {
     username: `Carlota`,
     password: hashedPass,
-    picPath: "",
     email: `carlota@carlo.com`,
     albums: []
   },
   {
     username: `Marc`,
     password: hashedPass,
-    picPath: "",
     email: `boyander@marc.com`,
     albums: []
   }
