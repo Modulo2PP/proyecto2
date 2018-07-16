@@ -169,4 +169,15 @@ form.login a:hover {
   left: -180px;
   top: 40px; }
 
+#usuario {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between; }
+
+#nav-options {
+  display: flex;
+  flex-direction: row;
+  list-style: none; }
+
 /*# sourceMappingURL=style.css.map */
