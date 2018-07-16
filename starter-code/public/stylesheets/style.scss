@@ -185,3 +185,25 @@ form.login a:hover
   font-size: 0.8rem;
 
 }
+
+.navbar-login {
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+.navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+.icon-size {
+  font-size: 87px;
+}
+#nav-user {
+  float: right
+}
+#nav-dropDown {
+  position: absolute;
+  left: -180px;
+  top: 40px;
+}
