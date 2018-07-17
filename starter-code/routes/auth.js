@@ -3,7 +3,7 @@ const passport = require('passport');
 const authRoutes = express.Router();
 const User = require("../models/User");
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-
+const Album = require("../models/Album")
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -11,6 +11,7 @@ const bcryptSalt = 10;
 
 
 authRoutes.get("/login", ensureLoggedOut(),(req, res, next) => {
+  console.log("render login")
   res.render("auth/login", { "message": req.flash("error") });
 });
 
@@ -42,21 +43,28 @@ authRoutes.post("/signup",ensureLoggedOut(), (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-
-    const newUser = new User({
-      username,
-      password: hashPass,
-      email
-    });
-
-    newUser.save((err) => {
-      if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
-      } else {
-        req.user=newUser
-        res.redirect("/");
-      }
-    });
+    const album = new Album({
+      name:"My collects"
+    })
+    Album.create([album])
+    .then(a=>{
+      const newUser = new User({
+        username,
+        password: hashPass,
+        email,
+        albums:[a[0]._id]
+      });
+  
+      newUser.save((err) => {
+        if (err) {
+          res.render("auth/signup", { message: "Something went wrong" });
+        } else {
+          req.user=newUser
+          res.redirect("/");
+        }
+      });
+    })
+    
   });
 });
 

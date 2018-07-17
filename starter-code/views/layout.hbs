@@ -33,19 +33,19 @@
       <ul class="navbar-nav" id="usuario">
         <ul id="nav-options">
           <li class="nav-item active">
-            <a class="nav-link" href="#" id="btn-explore">Explore
+            <a class="nav-link" href="/explore" id="btn-explore">Explore
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="btn-collect">Collect</a>
+            <a class="nav-link" href="/collect" id="btn-collect">Collect</a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="mycollection" id="btn-collect">My Collection</a>
           </li>
         </ul>
         <ul id="userInfo">
-          <a href="userinfo"><li id="navPic"><img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt=""></li></a>
+          <a href="/userinfo"><li id="navPic"><img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt=""></li></a>
           <li class="nav-item nav-link disabled" id="nav-user">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -96,57 +96,9 @@
     </div>
   </nav>
 
+  {{/if}} 
 
-  <div class="collect-search d-none">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="input-group" id="adv-search">
-          <input type="text" class="form-control" id="text-search" placeholder="Search by key word, hashtag..." />
-          <div class="input-group-btn">
-            <div class="btn-group" role="group">
-              <div class="dropdown dropdown-lg">
-                <button type="button" id="dropdown-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="caret"></span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                  <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                      <label for="filter">Filter by</label>
-                      <select class="form-control">
-                        <option value="0" selected>All </option>
-                        <option value="1">Featured</option>
-                        <option value="2">Most popular</option>
-                        <option value="3">Top rated</option>
-                        <option value="4">Most commented</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="contain">Author</label>
-                      <input class="form-control" type="text" />
-                    </div>
-                    <div class="form-group">
-                      <label for="contain">Contains the words</label>
-                      <input class="form-control" type="text" />
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                      <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                  </form>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <button type="button" class="btn btn-primary" id="btn-search" value="Search">
-          Search
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        </button>
-      </div>
-    </div>
-  </div>
+  {{{body}}}
   <div class="results d-none">
     <div class="row" id="collect-pictures">
 
@@ -154,10 +106,9 @@
     <button id="btn-more">More</button>
   </div>
 
-  {{/if}} {{{body}}}
-  <script src="/javascripts/credentialsFlickr.js"> </script>
+  
+<script src="/javascripts/credentialsFlickr.js"> </script>
   <script src='/javascripts/script.js'></script>
-
 </body>
 
 </html>

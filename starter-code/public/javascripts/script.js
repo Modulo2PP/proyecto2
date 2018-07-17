@@ -87,36 +87,14 @@ document.addEventListener(
       }, 1000); */
     }
 
-    function search_recent() {
-      $.getJSON(
-        "https://api.flickr.com/services/rest/?&method=flickr.photos.getRecent&api_key=" +
-          api_key +
-          "&user_id=" +
-          "&per_page=20" +
-          "&page=" +
-          num_pagina +
-          "&format=json&nojsoncallback=1"
-        
-      )
-      .done(data=>{
-        show_pictures([...data.photos.photo])
-      })
-    }
+    
     console.log("IronGenerator JS imported successfully!");
 
-    $("#btn-collect").click(() => {
-      num_pagina = 1;
-      $("#flex-Photos").addClass("d-none");
-      $(".collect-search").removeClass("d-none");
-      $(".results").removeClass("d-none");
-
-      search_recent();
-    });
+    
 
     $("#btn-explore").click(() => {
       num_pagina = 1;
       $("#flex-Photos").removeClass("d-none");
-      $(".collect-search").addClass("d-none");
       $(".results").addClass("d-none");
     });
 

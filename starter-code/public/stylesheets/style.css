@@ -253,9 +253,9 @@ img {
 
 .collect-search .row {
   position: relative;
+  width: 100%;
   text-align: center;
-  top: 25%;
-  left: 20%; }
+  top: 25%; }
 
 #dropdown-btn {
   height: 69px;
@@ -303,5 +303,19 @@ img {
   flex-direction: row;
   justify-content: flex-start;
   margin: 50px 35px; }
+
+#home {
+  background-image: url("https://images2.alphacoders.com/175/thumb-1920-175470.jpg");
+  background-size: cover;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; }
+
+#home h1 {
+  font-size: 100px;
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

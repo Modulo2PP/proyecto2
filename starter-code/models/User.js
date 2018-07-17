@@ -8,7 +8,7 @@ const userSchema = new Schema({
   password: {type: String,require:true},
   picPath:{type:String, default: "http://blog.aulaformativa.com/wp-content/uploads/2016/08/consideraciones-mejorar-primera-experiencia-de-usuario-aplicaciones-web-perfil-usuario.jpg"},
   email:{type:String,required:true},
-  albums:{type:[Schema.ObjectId]},
+  albums:{type:[{type:Schema.ObjectId,ref:"Album"}],default:[]},
 },{
   timestamps: {
     createdAt: 'created_at',
