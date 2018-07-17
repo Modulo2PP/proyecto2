@@ -3,39 +3,39 @@ document.addEventListener(
     () => {
     num_pagina = 1;
     function show_pictures(info) {
-        $("#collect-pictures").empty();
-  
-        for (var i = 0; i < info.length; i++) {
-          var item = info[i];
-          var url =
-            "https://farm" +
-            item.farm +
-            ".staticflickr.com/" +
-            item.server +
-            "/" +
-            item.id +
-            "_" +
-            item.secret +
-            "_m.jpg";
-          var urlOriginal =
-            "https://farm" +
-            item.farm +
-            ".staticflickr.com/" +
-            item.server +
-            "/" +
-            item.id +
-            "_" +
-            item.secret +
-            "_c.jpg";
-          console.debug(url);
-          $("#collect-pictures").append(
-            "<div class='col-md-4'>"+'<img src="' + url + '" class="imagen" ' + '"/>'+"</div>"
-          );
-        }
-        /*$('html, body').animate({
-            scrollTop: $("#resultados").offset().top
-        }, 1000); */
+      $("#collect-pictures").empty();
+
+      for (var i = 0; i < info.length; i++) {
+        var item = info[i];
+        var url =
+          "https://farm" +
+          item.farm +
+          ".staticflickr.com/" +
+          item.server +
+          "/" +
+          item.id +
+          "_" +
+          item.secret +
+          "_m.jpg";
+        var urlOriginal =
+          "https://farm" +
+          item.farm +
+          ".staticflickr.com/" +
+          item.server +
+          "/" +
+          item.id +
+          "_" +
+          item.secret +
+          "_c.jpg";
+        console.debug(url);
+        $("#collect-pictures").append(
+          "<div class='eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>' + "<button>" + "<i class='far fa-heart'></i>" + "</button>" +" </div>"
+        );
       }
+      /*$('html, body').animate({
+          scrollTop: $("#resultados").offset().top
+      }, 1000); */
+    }
     function search_recent() {
         console.log("entra")
         $.getJSON(
