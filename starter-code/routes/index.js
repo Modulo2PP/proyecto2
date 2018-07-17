@@ -26,23 +26,6 @@ router.get('/userinfo',ensureLoggedIn("/auth/login"), (req, res, next) => {
     res.render('user-info');
 });
 
-/* router.post('/userinfo' , (req,res,next) => {
-  const newInfo = {
-    email: req.body.email,
-    name: req.body.username,
-  }
-
-  User.findOneAndUpdate({username:user.username})
-  .then(()=>{
-
-    newInfo.save();
-    res.redirect('/');
-  })
- 
-
-
-}) */
-
 
 router.post("/userinfo",(req,res,next) =>{
   const user = req.user;

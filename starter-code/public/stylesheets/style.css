@@ -318,11 +318,11 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white; }
+  color: whitesmoke; }
 
 #home h1 {
   font-size: 100px;
-  color: white; }
+  color: whitesmoke; }
 
 .results {
   display: flex;
