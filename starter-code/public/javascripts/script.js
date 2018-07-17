@@ -9,20 +9,21 @@ document.addEventListener(
     };
     function search_flickr() {
       console.log("Realiza busqueda todas las fotos de Flickr");
-      return $.getJSON(
-        "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=" +
-          api_key +
-          "&user_id=" +
-          "&text=" +
-          ($("#text-search").val() == "" ? "" : $("#text-search").val()) +
-          "&per_page=20" +
-          "&page=" +
-          num_pagina +
-          "&format=json&nojsoncallback=1"
-      )
-      .done(data=>{
-        return data
-      })
+      return $
+        .getJSON(
+          "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=" +
+            api_key +
+            "&user_id=" +
+            "&text=" +
+            ($("#text-search").val() == "" ? "" : $("#text-search").val()) +
+            "&per_page=20" +
+            "&page=" +
+            num_pagina +
+            "&format=json&nojsoncallback=1"
+        )
+        .done(data => {
+          return data;
+        });
     }
     /*function search_pexels(hashtag="show") {
       console.log("Realiza busqueda todas las fotos de Instagram");
@@ -43,13 +44,11 @@ document.addEventListener(
       })
     }*/
 
-    function search(){
-      search_flickr()
-      .then(data=>{
-        console.log(data)
-          show_pictures([...data.photos.photo])
-        
-      })
+    function search() {
+      search_flickr().then(data => {
+        console.log(data);
+        show_pictures([...data.photos.photo]);
+      });
     }
 
     function show_pictures(info) {
@@ -79,7 +78,15 @@ document.addEventListener(
           "_c.jpg";
         console.debug(url);
         $("#collect-pictures").append(
-          "<div class='eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>' + "<button>" + "<i class='far fa-heart'></i>" + "</button>" +" </div>"
+          "<div class='eachPic'>" +
+            '<img src="' +
+            url +
+            '" class="imagen" ' +
+            '"/>' +
+            "<button>" +
+            "<i class='far fa-heart'></i>" +
+            "</button>" +
+            " </div>"
         );
       }
       /*$('html, body').animate({
@@ -87,10 +94,20 @@ document.addEventListener(
       }, 1000); */
     }
 
-    
     console.log("IronGenerator JS imported successfully!");
 
-    
+    $(".fav-btn").click((e) => {
+      console.log(e)
+      var path = $(e.currentTarget).parent().find("img").prop("src")
+      console.log(path)
+      $.ajax({
+        contentType: 'application/json',
+        dataType: 'json',
+        type: "POST",
+        url: "/pictures/add",
+        data: JSON.stringify({ "path": `${path}` }),
+      });
+    });
 
     $("#btn-explore").click(() => {
       num_pagina = 1;
