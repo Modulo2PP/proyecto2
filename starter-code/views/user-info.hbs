@@ -20,34 +20,35 @@
         </div>
         <h3>Personal info</h3>
 
+
+        <form action="/userinfo" method="post">
+
           <div class="form-group">
-            <label class="col-lg-4 control-label">Email:</label>
-            <div class="col-lg-6">
-              <input class="form-control" type="text" value="janesemail@gmail.com">
+            <label class="col-lg-8 control-label">Email:</label>
+            <div class="col-lg-10">
+              <input class="form-control" name="email" type="text" value={{user.email}}>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-4 control-label">Username:</label>
-            <div class="col-md-6">
-              <input class="form-control" type="text" value="janeuser">
+            <label class="col-md-8 control-label">Username:</label>
+            <div class="col-md-10">
+              <input class="form-control" name="username" type="text" value={{user.username}}>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-4 control-label">Password:</label>
-            <div class="col-md-6">
-              <input class="form-control" type="password" value="11111122333">
+            <label class="col-md-8 control-label">Password:</label>
+            <div class="col-md-10">
+              <input class="form-control" name="password" type="password">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-4 control-label">Confirm password:</label>
-            <div class="col-md-6">
-              <input class="form-control" type="password" value="11111122333">
+            <label class="col-md-8 control-label">Confirm password:</label>
+            <div class="col-md-10">
+              <input class="form-control" name="passconfirm" type="password">
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-4 control-label"></label>
-            <div class="col-md-6">
-              <input type="button" class="btn btn-primary" value="Save Changes">
+            <div class="col-md-10">
+              <button class="btn btn-primary" value="Save Changes"> Save Changes</button>
               <span></span>
               <input type="reset" class="btn btn-default" value="Cancel">
             </div>
