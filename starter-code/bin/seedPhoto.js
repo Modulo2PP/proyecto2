@@ -31,3 +31,7 @@ Photo.create([{
         mongoose.disconnect();
         console.log('moongose disconected')
     })
+    .catch(err=>{
+        console.log('error seeding pictures')
+
+    })

@@ -251,4 +251,27 @@ form.login a:hover {
 img {
   max-width: 100%; }
 
+.collect-search .row {
+  position: relative;
+  text-align: center;
+  top: 25%;
+  left: 20%; }
+
+#dropdown-btn {
+  height: 69px;
+  background: #cecbcb; }
+
+#btn-search {
+  width: 40%;
+  margin-top: 10px; }
+
+.results {
+  text-align: center;
+  margin: 20px; }
+
+.imagen {
+  width: 250px;
+  height: 200px;
+  max-height: 200px; }
+
 /*# sourceMappingURL=style.css.map */
