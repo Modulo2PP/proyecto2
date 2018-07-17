@@ -166,7 +166,7 @@ form.login a:hover {
 
 #nav-dropDown {
   position: absolute;
-  left: -180px;
+  left: -210px;
   top: 40px; }
 
 #usuario {
@@ -263,7 +263,9 @@ img {
 
 #btn-search {
   width: 40%;
-  margin-top: 10px; }
+  margin-top: 10px;
+  background: #fda603;
+  border: 1px solid #524d4d; }
 
 .results {
   text-align: center;
@@ -273,5 +275,33 @@ img {
   width: 250px;
   height: 200px;
   max-height: 200px; }
+
+#navPic {
+  width: 40px; }
+
+#userInfo {
+  display: flex;
+  list-style: none; }
+
+.album {
+  position: relative;
+  float: left;
+  width: 40%;
+  padding: 1em;
+  margin: 2em 10px 4em;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  text-align: center;
+  width: 200px;
+  margin: 0 30px; }
+
+#flex-albums {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 50px 35px; }
 
 /*# sourceMappingURL=style.css.map */

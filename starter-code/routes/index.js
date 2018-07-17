@@ -12,4 +12,13 @@ router.get('/',ensureLoggedIn("/auth/login"), (req, res, next) => {
 
 });
 
+router.get('/userinfo', (req, res, next) => {
+    res.render('user-info');
+});
+
+router.get('/mycollection', (req, res, next) => {
+  res.render('mycollection');
+});
+
+
 module.exports = router;
