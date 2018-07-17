@@ -29,7 +29,7 @@ document.addEventListener(
             "_c.jpg";
           console.debug(url);
           $("#collect-pictures").append(
-            "<div class='col-md-4 eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>'+ "<button>" + "<i class='far fa-heart'></i>" + "</button>" + "</div>" 
+            "<div class='col-md-4 eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>'+ "<button class='fav-btn'>" + "<i class='far fa-heart'></i>" + "</button>" + "</div>" 
           );
         }
         /*$('html, body').animate({
