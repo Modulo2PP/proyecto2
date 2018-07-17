@@ -210,7 +210,10 @@ form.login a:hover {
 .collect-search {
   background-image: url("/images/search-bgn.jpg");
   height: 70vh;
-  background-size: cover; }
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
 
 .col-md-8 > * {
   height: 70px; }
@@ -251,6 +254,34 @@ form.login a:hover {
 img {
   max-width: 100%; }
 
+.collect-search .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw; }
+
+#dropdown-btn {
+  height: 69px;
+  background: #cecbcb; }
+
+#btn-search {
+  width: 40%;
+  margin-top: 10px;
+  background: #fda603;
+  border: 1px solid #524d4d; }
+
+.search {
+  text-align: center; }
+
+.results {
+  text-align: center;
+  margin: 20px; }
+
+.imagen {
+  width: 250px;
+  height: 200px;
+  max-height: 200px; }
+
 #navPic {
   width: 40px; }
 
@@ -278,5 +309,23 @@ img {
   flex-direction: row;
   justify-content: flex-start;
   margin: 50px 35px; }
+
+.results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.eachPic {
+  margin-top: 25px;
+  width: 30%;
+  display: flex;
+  flex-direction: column; }
+  .eachPic button {
+    width: 10%;
+    background: #272727;
+    border-radius: 50px;
+    color: white;
+    margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */

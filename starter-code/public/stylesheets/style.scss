@@ -251,7 +251,10 @@ border-bottom-left-radius: 4px;
 .collect-search{
   background-image: url("/images/search-bgn.jpg");
   height: 70vh;
-  background-size: cover
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .col-md-8 > *{
 height: 70px;
@@ -305,6 +308,36 @@ img{
     max-width: 100%;
 }
 
+.collect-search .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+}
+
+#dropdown-btn{
+  height: 69px;
+  background: rgb(206, 203, 203)
+}
+#btn-search{
+  width: 40%;
+  margin-top: 10px;
+  background: rgb(253, 166, 3);
+  border:1px solid rgb(82, 77, 77);
+}
+
+.search{
+    text-align: center;
+}
+.results{
+  text-align: center;
+  margin:20px
+}
+.imagen{
+  width: 250px;
+  height: 200px;
+  max-height: 200px;
+}
 #navPic{
     width: 40px;
 }
@@ -336,4 +369,25 @@ img{
     flex-direction: row;
     justify-content: flex-start;
     margin: 50px 35px;
+}
+
+.results{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.eachPic{
+    margin-top: 25px;
+    width: 30%;
+     display: flex;
+    flex-direction: column;
+    button{
+        width: 10%;
+        background: #272727;
+        border-radius: 50px;
+        color: white;
+        margin-top: 20px;
+        }
 }
