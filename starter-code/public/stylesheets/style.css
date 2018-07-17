@@ -342,4 +342,22 @@ img {
     color: white;
     margin-top: 20px; }
 
+.results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.eachPic {
+  margin-top: 25px;
+  width: 30%;
+  display: flex;
+  flex-direction: column; }
+  .eachPic button {
+    width: 10%;
+    background: #272727;
+    border-radius: 50px;
+    color: white;
+    margin-top: 20px; }
+
 /*# sourceMappingURL=style.css.map */

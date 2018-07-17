@@ -36,6 +36,7 @@ document.addEventListener(
             scrollTop: $("#resultados").offset().top
         }, 1000); */
       }
+      
     function search_recent() {
         console.log("entra")
         $.getJSON(
