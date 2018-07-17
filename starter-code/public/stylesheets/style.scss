@@ -251,7 +251,10 @@ border-bottom-left-radius: 4px;
 .collect-search{
   background-image: url("/images/search-bgn.jpg");
   height: 70vh;
-  background-size: cover
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .col-md-8 > *{
 height: 70px;
@@ -306,10 +309,10 @@ img{
 }
 
 .collect-search .row{
-  position: relative;
-  width: 100%;
-  text-align: center;
-  top:25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
 }
 
 #dropdown-btn{
@@ -320,7 +323,11 @@ img{
   width: 40%;
   margin-top: 10px;
   background: rgb(253, 166, 3);
-  border:1px solid rgb(82, 77, 77)
+  border:1px solid rgb(82, 77, 77);
+}
+
+.search{
+    text-align: center;
 }
 .results{
   text-align: center;
@@ -378,4 +385,24 @@ img{
 #home h1{
   font-size:100px;
   color:white
+}
+.results{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.eachPic{
+    margin-top: 25px;
+    width: 30%;
+     display: flex;
+    flex-direction: column;
+    button{
+        width: 10%;
+        background: #272727;
+        border-radius: 50px;
+        color: white;
+        margin-top: 20px;
+        }
 }

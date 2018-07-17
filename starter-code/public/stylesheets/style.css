@@ -210,7 +210,10 @@ form.login a:hover {
 .collect-search {
   background-image: url("/images/search-bgn.jpg");
   height: 70vh;
-  background-size: cover; }
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
 
 .col-md-8 > * {
   height: 70px; }
@@ -252,10 +255,10 @@ img {
   max-width: 100%; }
 
 .collect-search .row {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  top: 25%; }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw; }
 
 #dropdown-btn {
   height: 69px;
@@ -266,6 +269,9 @@ img {
   margin-top: 10px;
   background: #fda603;
   border: 1px solid #524d4d; }
+
+.search {
+  text-align: center; }
 
 .results {
   text-align: center;
