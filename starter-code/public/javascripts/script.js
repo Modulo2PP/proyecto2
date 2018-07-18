@@ -107,7 +107,8 @@ document.addEventListener(
       })
       .done(album=>{
         var a = album.album[0]
-        
+        $("#flex-albums").append("<a href=/"+`${a._id}`+"/pictures><div class=album><h5>"+`${a.name}`+"</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>")
+        $("#flex-albums").append($(e.currentTarget).parent())
       })
     
   })

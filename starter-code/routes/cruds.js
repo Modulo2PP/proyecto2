@@ -100,7 +100,17 @@ router.get("/albums/add", ensureLoggedIn("/auth/login"),(req, res, next) => {
   Album.create([{name:"Unnamed"}])
     .then(a => {
       console.log("Album added")
-      
+      User.findById(req.user._id)
+      .then(u=>{
+        console.log(u.albums)
+        u.albums.push(a[0]._id)
+        console.log(u.albums)
+
+        User.findByIdAndUpdate(req.user._id,{albums:u.albums})
+        .then(()=>{
+          console.log("album added to user")
+        })
+      })
       res.json({ album:a });
     })
     .catch(()=>{
