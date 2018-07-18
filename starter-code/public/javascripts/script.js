@@ -66,7 +66,7 @@ document.addEventListener(
           "_" +
           item.secret +
           "_z.jpg";
-        
+
         console.debug(url);
         $("#collect-pictures").append(
           "<div class='eachPic'>" +
@@ -104,35 +104,104 @@ document.addEventListener(
       console.log("click  en add album")
       $.ajax({
         type: "GET",
-        url: "/albums/add",
-      })
-      .done(album=>{
-        var a = album.album[0]
-        $("#flex-albums").append("<a href=/"+`${a._id}`+"/pictures><div class=album><h5>"+`${a.name}`+"</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>")
-        $("#flex-albums").append($(e.currentTarget).parent())
-      })
-    
-  })
-    $("body").on("click",".delete-pic-btn",(e)=>{
-      
-      console.log("click ")
-      var path = $(e.currentTarget).parent().find("img").prop("src")
-      var albumId= $("#album-pics").find("#albumId").text()
-      $.ajax({
-        contentType: 'application/json',
-        dataType: 'json',
-        type: "POST",
-        url: "/pictures/remove",
-        data: JSON.stringify({ "path": `${path}`,"albumId":`${albumId}` }),
+        url: "/albums/add"
+      }).done(album => {
+        var a = album.album[0];
+        console.log(a)
+
+        $("#flex-albums").append(
+          "<div class='album-container'>"+'<p class="albumId d-none">'+`${a._id}`+'</p><a href=/"' +
+            `${a._id}` +
+            "/pictures><div class='album'><h5>" +
+            `${a.name}` +
+            "</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>"+'<button class="delete-album-btn"><i class="far fa-trash-alt"></i></button>'+"</div>"
+        );
+        $("#flex-albums").append($(e.currentTarget).parent());
       });
-    
-  })
-    
+    });
+    $("body").on("click", ".album-name-input", e => {
+      var previousName = $(".album-name-input").val();
+      var albumId = $("#album-pics")
+        .find("#albumId")
+        .text();
+      $("body").on("keypress", ".album-name-input", e => {
+        if (e.which == 13) {
+          $(".album-name-input").blur();
+          if ($(".album-name-input").val() != previousName) {
+            var name = $(".album-name-input").val();
+            $.ajax({
+              contentType: "application/json",
+              dataType: "json",
+              type: "POST",
+              url: "/albums/changeName",
+              data: JSON.stringify({ name: `${name}`, albumId: `${albumId}` })
+            });
+          }
+        }
+      });
+    });
+
+    $("body").on("click", ".delete-pic-btn", e => {
+      console.log("click ");
+      var path = $(e.currentTarget)
+        .parent()
+        .find("img")
+        .prop("src");
+      var albumId = $("#album-pics")
+        .find("#albumId")
+        .text();
+      $.ajax({
+        contentType: "application/json",
+        dataType: "json",
+        type: "POST",
+
+        url: "/pictures/remove",
+        data: JSON.stringify({ path: `${path}`, albumId: `${albumId}` })
+      }).done(() => {
+        console.log("borrada");
+        console.log($(e.currentTarget).parent()[0]);
+        $(e.currentTarget)
+          .parent()[0]
+          .remove();
+      });
+    });
+
+    $("body").on("click", ".delete-album-btn", e => {
+      console.log("click en borrar album");
+      if (
+        $(e.currentTarget)
+          .parent()
+          .is(":first-child")
+      ) {
+      }else{
+        var albumId = $(e.currentTarget)
+          .parent()
+          .find("p")
+          .text();
+
+        $.ajax({
+          contentType: "application/json",
+          dataType: "json",
+          type: "POST",
+
+          url: "/albums/remove",
+          data: JSON.stringify({ albumId: `${albumId}` })
+        }).done(a => {
+          console.log("borrado album");
+          console.log($(e.currentTarget).parent()[0]);
+
+          $(e.currentTarget)
+            .parent()[0]
+            .remove();
+        });
+      }
+    });
 
     $("#btn-explore").click(() => {
       num_pagina = 1;
       $("#flex-Photos").removeClass("d-none");
       $(".results").addClass("d-none");
+      //$("#nav-options").find("li").css({border:"1px solid orange"})
     });
 
     $("#btn-search").click(() => {

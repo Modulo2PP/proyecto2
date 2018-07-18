@@ -42,84 +42,112 @@ router.post(
             .then(user => {
               user.albums.forEach(e => {
                 for (let i = 0; i < e.pictures.length; i++) {
-                  if (e.pictures[i] == pic[0]._id+"") {
-                    e.pictures.splice(i, i+1);
+                  if (e.pictures[i] == pic[0]._id + "") {
+                    e.pictures.splice(i, i + 1);
 
-                    Album.findByIdAndUpdate(e._id,{pictures:e.pictures})
-                    .then(()=>{
-                      console.log("album actualizado")
-                    })
-                    .catch(err=>{
-                      console.log("Error updating album")
-                    })
-                    break
+                    Album.findByIdAndUpdate(e._id, { pictures: e.pictures })
+                      .then(() => {
+                        console.log("album actualizado");
+                      })
+                      .catch(err => {
+                        console.log("Error updating album");
+                      });
+                    break;
                   }
                 }
               });
-              
             })
             .catch(err => {
               console.log("Error at pictures remove");
             });
-        } else {
-          Album.findById(id)
-            .then(a => {
-              for(let i=0;i<a.pictures;i++){
-                if(pic[0]._id==a.pictures[i]){
-                  a.pictures.splice(i,i+1)
-                  break
-                }
 
+        } else {
+          Album.findById(id).then(a => {
+            for (let i = 0; i < a.pictures; i++) {
+              if (pic[0]._id == a.pictures[i]) {
+                a.pictures.splice(i, i + 1);
+                break;
               }
-              Album.findByIdAndUpdate(a._id,{pictures:a.pictures})
-                    .then(()=>{
-                      console.log("album actualizado")
-                    })
-                    .catch(err=>{
-                      console.log("Error updating album")
-                    })
-              
-            })
+            }
+            Album.findByIdAndUpdate(a._id, { pictures: a.pictures })
+              .then(() => {
+                console.log("album actualizado");
+              })
+              .catch(err => {
+                console.log("Error updating album");
+              });
+          });
+
         }
       })
       .catch(() => {
         console.log("Error findinng pic at remove pic");
       });
+      res.json({a:"hola"})
   }
 );
 
-router.get("/:albumId/pictures", ensureLoggedIn("/auth/login"),(req, res, next) => {
-  var id = req.params.albumId;
-  Album.findById(id)
-    .populate("pictures")
+router.get(
+  "/:albumId/pictures",
+  ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    var id = req.params.albumId;
+    Album.findById(id)
+      .populate("pictures")
+      .then(a => {
+        let album = { name: a.name, _id: a._id };
+        res.render("cruds/pictures", { pictures: a.pictures, album });
+      });
+  }
+);
+
+router.get("/albums/add", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  Album.create([{ name: "Unnamed" }])
     .then(a => {
-      let album = { name: a.name, _id: a._id };
-      res.render("cruds/pictures", { pictures: a.pictures, album });
+      console.log("Album added");
+      User.findById(req.user._id).then(u => {
+        console.log(u.albums);
+        u.albums.push(a[0]._id);
+        console.log(u.albums);
+
+        User.findByIdAndUpdate(req.user._id, { albums: u.albums }).then(() => {
+          console.log("album added to user");
+        });
+      });
+      res.json({ album: a });
+    })
+    .catch(() => {
+      console.log("Error adding album ");
     });
 });
 
-router.get("/albums/add", ensureLoggedIn("/auth/login"),(req, res, next) => {
-  Album.create([{name:"Unnamed"}])
-    .then(a => {
-      console.log("Album added")
-      User.findById(req.user._id)
-      .then(u=>{
-        console.log(u.albums)
-        u.albums.push(a[0]._id)
-        console.log(u.albums)
+router.post(
+  "/albums/changeName",
+  ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    Album.findByIdAndUpdate(req.body.albumId, { name: req.body.name }).then(
+      a => {
+        console.log("Albums name changed successfully");
+      }
+    );
+  }
+);
 
-        User.findByIdAndUpdate(req.user._id,{albums:u.albums})
-        .then(()=>{
-          console.log("album added to user")
-        })
-      })
-      res.json({ album:a });
-    })
-    .catch(()=>{
-      console.log("Error adding album ")
-    })
-});
+router.post(
+  "/albums/remove",
+  ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    console.log(req.body.albumId)
+    Album.findByIdAndRemove(req.body.albumId)
+    .then(
+      ()=> {
+        console.log("Album successfully removed");
+        res.json({ album: "hola"});
 
+      }
+    );
+  }
+);
 
 
 module.exports = router;
