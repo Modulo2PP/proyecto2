@@ -13,8 +13,8 @@
     </div>
     {{#each albums}}
     <div class="album-container">
-        <p class="albumId d-none">{{this._id}}</p>
-        <a href="/{{_id}}/pictures">
+        <p class="albumId d-none">"{{this._id}}"</p>
+        <a href="/{{this._id}}/pictures">
             <div class="album">
 
                 <h5>{{name}}</h5>

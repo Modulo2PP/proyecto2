@@ -20,7 +20,7 @@ document.addEventListener(
           
           console.debug(url);
           $("#collect-pictures").append(
-            "<div class='col-md-4 eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>'+ "<button class='fav-btn2'>" + "<i class='far fa-heart'></i>" + "</button>" + "</div>" 
+            "<div class='col-md-4 eachPic'>"+'<div><img src="' + url + '" class="imagen" ' + '"/></div>'+ "<button class='fav-btn2'>" + "<i class='far fa-heart'></i>" + "</button>" + "</div>" 
           );
         }
         /*$('html, body').animate({

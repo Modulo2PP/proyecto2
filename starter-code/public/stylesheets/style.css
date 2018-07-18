@@ -223,7 +223,7 @@ form.login a:hover {
 
 #barraNavegacion {
   background-color: #272727;
-  height: 60px;
+  height: 80px;
   position: fixed;
   width: 100%;
   top: 0;
@@ -361,9 +361,10 @@ img {
   margin-top: 25px;
   width: 30%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  text-align: -webkit-center; }
   .eachPic button {
-    width: 10%;
+    width: 70px;
     background: #272727;
     border-radius: 50px;
     color: white;
@@ -396,5 +397,14 @@ img {
 
 .btn-generales-fotos h5 {
   display: inline; }
+
+.fav-btn2, .fav-btn {
+  width: 70px; }
+
+button:focus {
+  outline: none; }
+
+#edit-profile {
+  margin-top: 90px; }
 
 /*# sourceMappingURL=style.css.map */

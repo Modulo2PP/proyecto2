@@ -15,15 +15,27 @@ router.post(
   (req, res, next) => {
     if(!req.body.albumId){
       req.body.albumId=req.user.albums[0]
+      Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(pi => {
+        addToAlbum(pi[0]._id, req.body.albumId);
+      })
+      .then(()=>{
+        res.json({a:"hola"})
+
+      })
+
+      return
     }
     Picture.find({ path: req.body.path }).then(pic => {
       if (pic[0] != null) {
         Picture.findByIdAndUpdate(pic[0]._id, [{users:pic[0].users.push(req.user.username) ,lastUser:req.user.username }])
         .then((p)=>{
+          addToAlbum(p._id,req.user.albums[0])
           addToAlbum(p._id, req.body.albumId);
         })
       } else {
         Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(pi => {
+          addToAlbum(pi[0]._id,req.user.albums[0])
+
           addToAlbum(pi[0]._id, req.body.albumId);
         })
       }
@@ -35,7 +47,7 @@ router.post(
   "/pictures/remove",
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
-    const path = req.body.path;
+    //const path = req.body.path;
     const albumId = req.body.albumId;
     Picture.find({ path: req.body.path })
       .then(pic => {
@@ -65,10 +77,12 @@ router.post(
             });
 
         } else {
-          Album.findById(id).then(a => {
-            for (let i = 0; i < a.pictures; i++) {
-              if (pic[0]._id == a.pictures[i]) {
-                a.pictures.splice(i, i + 1);
+          Album.findById(albumId).then(a => {
+            for (let i = 0; i < a.pictures.length; i++) {
+              console.log(pic[0]._id + a.pictures[i])
+              if (pic[0]._id+"" == a.pictures[i]+"") {
+                console.log("borra")
+                a.pictures.splice(i, i+1);
                 break;
               }
             }

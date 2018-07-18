@@ -90,9 +90,7 @@ document.addEventListener(
       
         console.log("click en fav")
         var path = $(e.currentTarget).parent().parent().find("img").prop("src")
-        console.log(path)
         var albumId = $(e.currentTarget).parent().find('.choose-album').val()
-        console.log(albumId)
         $.ajax({
           contentType: 'application/json',
           dataType: 'json',
@@ -100,8 +98,9 @@ document.addEventListener(
           url: "/pictures/add",
           data: JSON.stringify({ "path": `${path}`, "albumId": `${albumId}`  }),
         })
-        .then(()=>{
+        .done(()=>{
           console.log("Picture added to album")
+          $(e.currentTarget).css({color:"red"})
         })
       
     })
@@ -122,6 +121,8 @@ document.addEventListener(
       })
       .then(()=>{
         console.log("Picture added to album")
+        $(e.currentTarget).css({color:"red"})
+
       })
     
   })
@@ -168,7 +169,7 @@ document.addEventListener(
     });
 
     $("body").on("click", ".delete-pic-btn", e => {
-      console.log("click ");
+      console.log("click delete");
       var path = $(e.currentTarget)
         .parent()
         .find("img")
@@ -176,6 +177,8 @@ document.addEventListener(
       var albumId = $("#album-pics")
         .find("#albumId")
         .text();
+        console.log(path)
+        console.log(albumId)
       $.ajax({
         contentType: "application/json",
         dataType: "json",
@@ -183,9 +186,8 @@ document.addEventListener(
 
         url: "/pictures/remove",
         data: JSON.stringify({ path: `${path}`, albumId: `${albumId}` })
-      }).done(() => {
+      }).done((a) => {
         console.log("borrada");
-        console.log($(e.currentTarget).parent()[0]);
         $(e.currentTarget)
           .parent()[0]
           .remove();
