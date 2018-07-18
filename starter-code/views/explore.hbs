@@ -2,9 +2,12 @@
     {{#each Pictures}}
     <div class="pic-card">
 
+        <div><p>{{lastUser}}</p></div>
+
         <div>
             <img src={{path}} alt="">
         </div>
+        
         <div class="btn-generales-fotos">
             
             <button class="fav-btn">
@@ -16,9 +19,9 @@
             {{/if}}
             
 
-            <select class="fav-btn" name="select">
+            <select class="choose-album" name="select">
                 {{#each ../albums}}
-                <option value="">{{name}}</option>
+                <option value="._id">{{name}}</option>
                 {{/each}}
             </select>
         </div>

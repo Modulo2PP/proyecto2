@@ -15,13 +15,13 @@ router.post(
   (req, res, next) => {
     Picture.find({ path: req.body.path }).then(pic => {
       if (pic[0] != null) {
-        Picture.findByIdAndUpdate(pic[0]._id, {users:pic[0].users.push(req.user.username)})
+        Picture.findByIdAndUpdate(pic[0]._id, [{users:pic[0].users.push(req.user.username) ,lastUser:req.user.username }])
         .then((p)=>{
-          addToAlbum(pic[0]._id, req.user.albums[0]);
+          addToAlbum(pic[0]._id, req.body.albumId);
         })
       } else {
-        Picture.create([{ path: req.body.path, users:[req.user.username]}]).then(p => {
-          addToAlbum(p[0]._id, req.user.albums[0]);
+        Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(p => {
+          addToAlbum(p[0]._id, req.body.albumId);
         })
       }
     });

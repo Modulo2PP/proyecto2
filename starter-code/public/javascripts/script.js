@@ -90,12 +90,13 @@ document.addEventListener(
       
         console.log("click ")
         var path = $(e.currentTarget).parent().find("img").prop("src")
+        var albumId = $(e.currentTarget).parent().find('choose-album').val()
         $.ajax({
           contentType: 'application/json',
           dataType: 'json',
           type: "POST",
           url: "/pictures/add",
-          data: JSON.stringify({ "path": `${path}` }),
+          data: JSON.stringify({ "path": `${path}`, "albumId": `${albumId}`  }),
         });
       
     })

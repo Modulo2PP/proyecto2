@@ -12,15 +12,12 @@ Photo.collection.drop()
 
 Photo.create([{
             path: "https://www.viajejet.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada-1440x810.jpg",
-            name:""
         },
         {
             path: "https://gcdn.emol.cl/mascotas/files/2018/03/perro-raro.jpg",
-            name: ""
         },
         {
             path: "https://cms.exchange4media.com/files/article/article_extra_large_image/1531334500_v8VH6T_cristiano_ronald-2.jpg",
-            name:""
         }
     ])
     .then(() => {

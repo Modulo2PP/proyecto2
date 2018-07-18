@@ -13,10 +13,8 @@ router.get('/explore',ensureLoggedIn("/auth/login"), (req, res, next) => {
   Picture.find().sort({updated_at: -1}).then((Pictures)=>{
     User.findById(req.user._id).populate('albums').then(user=>{
       const albums = user.albums;
-      console.log(albums)
+      const lastUser = [];
       res.render('explore',{Pictures,albums});
-
-
     })
 
   })
