@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt")
 const bcryptSalt = 10
 /* GET home page */
 router.get('/explore',ensureLoggedIn("/auth/login"), (req, res, next) => {
-  Picture.find().sort({updated_at: 1}).then((Pictures)=>{
+  Picture.find().sort({updated_at: -1}).then((Pictures)=>{
     res.render('explore',{Pictures});
   })
 

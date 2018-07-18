@@ -5,6 +5,9 @@
   margin: 0;
   height: 100vh; }
 
+.margin-top {
+  margin-top: 60px; }
+
 .wrap {
   width: 100%;
   height: 100%;
@@ -220,33 +223,40 @@ form.login a:hover {
 
 #barraNavegacion {
   background-color: #272727;
-  height: 60px; }
+  height: 60px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10; }
 
 #barraNavegacion a {
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600; }
 
-#flex-Photos {
+.flex-Photos {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-evenly; }
 
-#card {
+.pic-card {
   display: flex;
   flex-direction: column;
   width: 75%;
   margin: 20px 0;
-  text-align: center; }
-  #card img {
+  text-align: center;
+  border-bottom: 1px solid #9c9b9b; }
+  .pic-card > * {
+    margin: 10px; }
+  .pic-card img {
     height: 500px;
     object-fit: cover; }
-  #card p {
+  .pic-card p {
     margin: 20px 0; }
-  #card button {
+  .pic-card button {
     width: 5%;
-    margin: 0 auto;
+    margin: 10px auto;
     background: #272727;
     border-radius: 100px;
     color: white; }
@@ -308,7 +318,16 @@ img {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 50px 35px; }
+  margin: 80px 35px; }
+  #flex-albums .add-album {
+    display: flex;
+    vertical-align: middle; }
+    #flex-albums .add-album .fa-plus-circle:before {
+      background: rgba(123, 199, 9, 0.603);
+      border-radius: 50px; }
+    #flex-albums .add-album i {
+      font-size: 40px;
+      height: 50px; }
 
 #home {
   background-image: url("https://images2.alphacoders.com/175/thumb-1920-175470.jpg");
@@ -342,22 +361,12 @@ img {
     color: white;
     margin-top: 20px; }
 
-.results {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center; }
-
-.eachPic {
-  margin-top: 25px;
-  width: 30%;
-  display: flex;
-  flex-direction: column; }
-  .eachPic button {
-    width: 10%;
-    background: #272727;
-    border-radius: 50px;
-    color: white;
-    margin-top: 20px; }
+#album-pics {
+  text-align: center;
+  margin-top: 20px; }
+  #album-pics .delete-pic-btn {
+    background: #be0505; }
+  #album-pics .album-title {
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

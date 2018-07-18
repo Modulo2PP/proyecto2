@@ -65,17 +65,8 @@ document.addEventListener(
           item.id +
           "_" +
           item.secret +
-          "_m.jpg";
-        var urlOriginal =
-          "https://farm" +
-          item.farm +
-          ".staticflickr.com/" +
-          item.server +
-          "/" +
-          item.id +
-          "_" +
-          item.secret +
-          "_c.jpg";
+          "_z.jpg";
+        
         console.debug(url);
         $("#collect-pictures").append(
           "<div class='eachPic'>" +
@@ -83,7 +74,7 @@ document.addEventListener(
             url +
             '" class="imagen" ' +
             '"/>' +
-            "<button>" +
+            "<button class='fav-btn'>" +
             "<i class='far fa-heart'></i>" +
             "</button>" +
             " </div>"
@@ -95,19 +86,46 @@ document.addEventListener(
     }
 
     console.log("IronGenerator JS imported successfully!");
-
-    $(".fav-btn").click((e) => {
-      console.log(e)
+    $("body").on("click",".fav-btn",(e)=>{
+      
+        console.log("click ")
+        var path = $(e.currentTarget).parent().find("img").prop("src")
+        $.ajax({
+          contentType: 'application/json',
+          dataType: 'json',
+          type: "POST",
+          url: "/pictures/add",
+          data: JSON.stringify({ "path": `${path}` }),
+        });
+      
+    })
+    $("body").on("click",".add-album i",(e)=>{
+      console.log("click  en add album")
+      $.ajax({
+        type: "GET",
+        url: "/albums/add",
+      })
+      .done(album=>{
+        var a = album.album[0]
+        
+      })
+    
+  })
+    $("body").on("click",".delete-pic-btn",(e)=>{
+      
+      console.log("click ")
       var path = $(e.currentTarget).parent().find("img").prop("src")
-      console.log(path)
+      var albumId= $("#album-pics").find("#albumId").text()
       $.ajax({
         contentType: 'application/json',
         dataType: 'json',
         type: "POST",
-        url: "/pictures/add",
-        data: JSON.stringify({ "path": `${path}` }),
+        url: "/pictures/remove",
+        data: JSON.stringify({ "path": `${path}`,"albumId":`${albumId}` }),
       });
-    });
+    
+  })
+    
 
     $("#btn-explore").click(() => {
       num_pagina = 1;
