@@ -13,19 +13,22 @@ router.post(
   "/pictures/add",
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
+    if(!req.body.albumId){
+      req.body.albumId=req.user.albums[0]
+    }
     Picture.find({ path: req.body.path }).then(pic => {
       if (pic[0] != null) {
         Picture.findByIdAndUpdate(pic[0]._id, [{users:pic[0].users.push(req.user.username) ,lastUser:req.user.username }])
         .then((p)=>{
-          addToAlbum(pic[0]._id, req.body.albumId);
+          addToAlbum(p._id, req.body.albumId);
         })
       } else {
-        Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(p => {
-          addToAlbum(p[0]._id, req.body.albumId);
+        Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(pi => {
+          addToAlbum(pi[0]._id, req.body.albumId);
         })
       }
+      res.json({a:"hola"})
     });
-    res.send("");
   }
 );
 router.post(
@@ -96,6 +99,7 @@ router.get(
       .populate("pictures")
       .then(a => {
         let album = { name: a.name, _id: a._id };
+        console.log(a)
         res.render("cruds/pictures", { pictures: a.pictures, album });
       });
   }
