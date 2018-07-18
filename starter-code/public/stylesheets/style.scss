@@ -267,7 +267,7 @@ height: 70px;
 
 #barraNavegacion{
     background-color: rgb(39, 39, 39);
-    height: 60px;
+    height: 80px;
     position:fixed;
     width: 100%;
     top:0;
@@ -436,8 +436,9 @@ img{
     width: 30%;
      display: flex;
     flex-direction: column;
+    text-align: -webkit-center;
     button{
-        width: 10%;
+        width:70px;
         background: #272727;
         border-radius: 50px;
         color: white;
@@ -529,4 +530,15 @@ img{
         display: inline-block;
 
     }
+}
+ 
+.fav-btn2,.fav-btn{
+    width: 70px;
+    
+
+}
+button:focus { outline: none; }
+
+ #edit-profile{
+    margin-top:90px;
 }
