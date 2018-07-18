@@ -88,18 +88,44 @@ document.addEventListener(
     console.log("IronGenerator JS imported successfully!");
     $("body").on("click",".fav-btn",(e)=>{
       
-        console.log("click ")
-        var path = $(e.currentTarget).parent().find("img").prop("src")
+        console.log("click en fav")
+        var path = $(e.currentTarget).parent().parent().find("img").prop("src")
+        console.log(path)
         var albumId = $(e.currentTarget).parent().find('.choose-album').val()
+        console.log(albumId)
         $.ajax({
           contentType: 'application/json',
           dataType: 'json',
           type: "POST",
           url: "/pictures/add",
           data: JSON.stringify({ "path": `${path}`, "albumId": `${albumId}`  }),
-        });
+        })
+        .then(()=>{
+          console.log("Picture added to album")
+        })
       
     })
+
+    $("body").on("click",".fav-btn2",(e)=>{
+      
+      console.log("click en fav")
+      var path = $(e.currentTarget).parent().find("img").prop("src")
+      console.log(path)
+      var albumId = $(e.currentTarget).parent().find('.choose-album').val()
+      console.log(albumId)
+      $.ajax({
+        contentType: 'application/json',
+        dataType: 'json',
+        type: "POST",
+        url: "/pictures/add",
+        data: JSON.stringify({ "path": `${path}`  }),
+      })
+      .then(()=>{
+        console.log("Picture added to album")
+      })
+    
+  })
+
     $("body").on("click",".add-album i",(e)=>{
       console.log("click  en add album")
       $.ajax({
