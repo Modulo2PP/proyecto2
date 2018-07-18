@@ -485,4 +485,48 @@ img{
         display: inline;
     }
 }
- 
+
+.eachPhoto-btn{
+    margin: 0 20px;
+}
+
+
+.info-position{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 8%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.personal-info{
+    h3{
+        color:#fda809;
+        font-weight: 700;
+    }
+}
+
+.labels{
+    font-style: oblique;
+}
+
+.datos{
+    
+    display: inline-block;
+    background-color:rgb(227,229,230);
+    border-radius: 5px;
+}
+.datos-personal-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    > * {
+        display: inline-block;
+
+    }
+}

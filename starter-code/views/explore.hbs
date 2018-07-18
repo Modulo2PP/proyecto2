@@ -10,20 +10,20 @@
         
         <div class="btn-generales-fotos">
             
-            <button class="fav-btn">
+            <button class="fav-btn eachPhoto-btn">
                 <i class="far fa-heart"></i>
             </button>
             
-            {{#if users}}
-            <h5>{{users}}<i class="fas fa-heart"></i></h5>
-            {{/if}}
-            
-
-            <select class="choose-album" name="select">
+            <select class="choose-album eachPhoto-btn" name="select">
                 {{#each ../albums}}
                 <option value="{{_id}}">{{name}}</option>
                 {{/each}}
             </select>
+
+            {{#if users}}
+            <h5 class="eachPhoto-btn">{{users}}<i class="fas fa-heart"></i></h5>
+            {{/if}}
+            
         </div>
 
     </div>

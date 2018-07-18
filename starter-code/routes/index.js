@@ -71,5 +71,8 @@ router.get('/mycollection', ensureLoggedIn("/auth/login"),(req, res, next) => {
   })
 });
 
+router.get('/otheruser', ensureLoggedIn("/auth/login"),(req, res, next) => {
+  res.render('otherUser');
+});
 
 module.exports = router;
