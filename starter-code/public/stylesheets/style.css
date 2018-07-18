@@ -228,6 +228,8 @@ form.login a:hover {
   width: 100%;
   top: 0;
   z-index: 10; }
+  #barraNavegacion #collectr {
+    color: #fda809; }
 
 #barraNavegacion a {
   color: white;
@@ -300,15 +302,13 @@ img {
   list-style: none; }
 
 .album {
-  position: relative;
-  float: left;
   width: 40%;
   padding: 1em;
   margin: 2em 10px 4em;
   background: #fff;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   text-align: center;
   width: 200px;
   margin: 0 30px; }
@@ -321,13 +321,21 @@ img {
   margin: 80px 35px; }
   #flex-albums .add-album {
     display: flex;
-    vertical-align: middle; }
+    vertical-align: middle;
+    margin-top: 20px; }
     #flex-albums .add-album .fa-plus-circle:before {
       background: rgba(123, 199, 9, 0.603);
       border-radius: 50px; }
     #flex-albums .add-album i {
       font-size: 40px;
       height: 50px; }
+  #flex-albums .delete-album-btn {
+    background: #be0505;
+    border-radius: 100px;
+    width: 70px;
+    color: white;
+    align-items: center;
+    margin-left: 35%; }
 
 #home {
   background-image: url("https://images2.alphacoders.com/175/thumb-1920-175470.jpg");
@@ -363,10 +371,27 @@ img {
 
 #album-pics {
   text-align: center;
-  margin-top: 20px; }
+  margin-top: 60px; }
   #album-pics .delete-pic-btn {
-    background: #be0505; }
+    background: #be0505;
+    width: 70px; }
   #album-pics .album-title {
     text-align: center; }
+    #album-pics .album-title input {
+      font-size: 30px;
+      border: 0;
+      border-bottom: 1px solid black;
+      text-align: center;
+      margin-top: 20px; }
+
+.album-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center; }
+  .album-container > * {
+    margin-top: 10px; }
+
+.fav-btn {
+  width: 70px; }
 
 /*# sourceMappingURL=style.css.map */

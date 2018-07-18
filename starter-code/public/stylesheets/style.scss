@@ -272,6 +272,9 @@ height: 70px;
     width: 100%;
     top:0;
     z-index: 10;
+    #collectr{
+        color: rgb(253, 168, 9);
+    }
 }
 
 #barraNavegacion a{
@@ -361,15 +364,14 @@ img{
 }
 
 .album{
-    position:relative;
-    float:left;
+    
     width:40%;
     padding:1em;
     margin:2em 10px 4em;
     background:#fff;
     -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3),0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 5px 7px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     text-align: center;
     width: 200px;
     margin: 0 30px;
@@ -385,14 +387,23 @@ img{
     .add-album{
         display: flex;
         vertical-align: middle;
+        margin-top:20px;
         .fa-plus-circle:before{
             background: rgba(123, 199, 9, 0.603);
-            border-radius: 50px
+            border-radius: 50px;
         }
          i{
             font-size: 40px;
             height: 50px;
         }
+    }
+    .delete-album-btn{
+        background: rgb(190, 5, 5);
+        border-radius: 100px;
+        width: 70px;
+        color:white;
+        align-items: center;
+        margin-left: 35%;
     }
     
    
@@ -436,12 +447,35 @@ img{
 
 #album-pics{
   text-align: center;
-  margin-top: 20px;
+  margin-top: 60px;
   .delete-pic-btn{
-  background: rgb(190, 5, 5)
+  background: rgb(190, 5, 5);
+  width: 70px;
   }
   .album-title{
-      text-align: center
+      text-align: center;
+      input{
+          font-size: 30px;
+          border:0;
+          border-bottom: 1px solid black;
+          text-align: center;
+          margin-top:20px;
+      }
   }
+}
+
+.album-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    > *{
+        margin-top: 10px
+    }
+    
+}
+
+.fav-btn{
+    width: 70px;
 }
 
