@@ -57,7 +57,7 @@ router.get('/mycollection', ensureLoggedIn("/auth/login"),(req, res, next) => {
   User.findById(req.user._id)
   .populate("albums")
   .then(user=>{
-    res.render('mycollection',{albums:user.albums});
+    res.render('cruds/albums',{albums:user.albums});
 
   })
   .catch(err=>{
