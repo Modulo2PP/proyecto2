@@ -5,13 +5,23 @@
         <div>
             <img src={{path}} alt="">
         </div>
-        <p>{{name}}</p>
+        <div class="btn-generales-fotos">
+            
+            <button class="fav-btn">
+                <i class="far fa-heart"></i>
+            </button>
+            
+            {{#if users}}
+            <h5>{{users}}<i class="fas fa-heart"></i></h5>
+            {{/if}}
+            
 
-        <button class="fav-btn">
-            <i class="far fa-heart"></i>
-        </button>
-
-
+            <select class="fav-btn" name="select">
+                {{#each ../albums}}
+                <option value="">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
 
     </div>
     {{/each}}
