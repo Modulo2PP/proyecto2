@@ -4,12 +4,9 @@ const User          = require('../models/User');
 const bcrypt        = require('bcrypt');
 
 passport.use(new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, foundUser) => {
-    if (err) {
-      next(err);
-      return;
-    }
-
+  User.findOne({ username })
+    .populate('albums')
+    .then((foundUser) => {
     if (!foundUser) {
       next(null, false, { message: 'Incorrect username' });
       return;
@@ -21,5 +18,8 @@ passport.use(new LocalStrategy((username, password, next) => {
     }
 
     next(null, foundUser);
-  });
-}));
+})
+.catch((err)=>{
+  next(err)
+})
+  }));

@@ -16,17 +16,8 @@ document.addEventListener(
             item.id +
             "_" +
             item.secret +
-            "_m.jpg";
-          var urlOriginal =
-            "https://farm" +
-            item.farm +
-            ".staticflickr.com/" +
-            item.server +
-            "/" +
-            item.id +
-            "_" +
-            item.secret +
-            "_c.jpg";
+            "_z.jpg";
+          
           console.debug(url);
           $("#collect-pictures").append(
             "<div class='col-md-4 eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>'+ "<button class='fav-btn'>" + "<i class='far fa-heart'></i>" + "</button>" + "</div>" 
@@ -36,6 +27,7 @@ document.addEventListener(
             scrollTop: $("#resultados").offset().top
         }, 1000); */
       }
+      
     function search_recent() {
         console.log("entra")
         $.getJSON(

@@ -1,3 +1,5 @@
+
+
 .body-auth
 {
     background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
@@ -6,7 +8,10 @@
     margin: 0;
     height: 100vh;
 }
+.margin-top{
+margin-top:60px;
 
+}
 .wrap
 {
     width: 100%;
@@ -263,6 +268,10 @@ height: 70px;
 #barraNavegacion{
     background-color: rgb(39, 39, 39);
     height: 60px;
+    position:fixed;
+    width: 100%;
+    top:0;
+    z-index: 10;
 }
 
 #barraNavegacion a{
@@ -271,7 +280,7 @@ height: 70px;
     font-weight: 600;
 }
 
-#flex-Photos{
+.flex-Photos{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -279,13 +288,16 @@ height: 70px;
 
 }
 
-#card{
+.pic-card{
     display: flex;
     flex-direction: column;
     width: 75%;
     margin: 20px 0 ;
     text-align: center;
-
+    border-bottom: 1px solid rgb(156, 155, 155);
+  > *{
+    margin:10px
+  }
     img{
         height: 500px;
         object-fit: cover;
@@ -296,7 +308,7 @@ height: 70px;
 
     button{
         width: 5%;
-        margin: 0 auto;
+        margin: 10px auto;
         background: #272727;
         border-radius: 100px;
         color: white;
@@ -369,7 +381,21 @@ img{
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 50px 35px;
+    margin: 80px 35px;
+    .add-album{
+        display: flex;
+        vertical-align: middle;
+        .fa-plus-circle:before{
+            background: rgba(123, 199, 9, 0.603);
+            border-radius: 50px
+        }
+         i{
+            font-size: 40px;
+            height: 50px;
+        }
+    }
+    
+   
 }
 
 #home{
@@ -407,3 +433,21 @@ img{
         margin-top: 20px;
         }
 }
+
+#album-pics{
+  text-align: center;
+  margin-top: 20px;
+  .delete-pic-btn{
+  background: rgb(190, 5, 5)
+  }
+  .album-title{
+      text-align: center
+  }
+}
+ 
+.btn-generales-fotos{
+    h5{
+        display: inline;
+    }
+}
+ 

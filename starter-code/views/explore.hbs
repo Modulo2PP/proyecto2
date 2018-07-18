@@ -1,14 +1,27 @@
-<div id="flex-Photos">
+<div class="flex-Photos margin-top">
     {{#each Pictures}}
-    <div id="card">
+    <div class="pic-card">
 
         <div>
             <img src={{path}} alt="">
         </div>
-        <p>{{name}}</p>
-        <button>
-            <i class="far fa-heart"></i>
-        </button>
+        <div class="btn-generales-fotos">
+            
+            <button class="fav-btn">
+                <i class="far fa-heart"></i>
+            </button>
+            
+            {{#if users}}
+            <h5>{{users}}<i class="fas fa-heart"></i></h5>
+            {{/if}}
+            
+
+            <select class="fav-btn" name="select">
+                {{#each ../albums}}
+                <option value="">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
 
     </div>
     {{/each}}

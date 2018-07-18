@@ -9,20 +9,21 @@ document.addEventListener(
     };
     function search_flickr() {
       console.log("Realiza busqueda todas las fotos de Flickr");
-      return $.getJSON(
-        "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=" +
-          api_key +
-          "&user_id=" +
-          "&text=" +
-          ($("#text-search").val() == "" ? "" : $("#text-search").val()) +
-          "&per_page=20" +
-          "&page=" +
-          num_pagina +
-          "&format=json&nojsoncallback=1"
-      )
-      .done(data=>{
-        return data
-      })
+      return $
+        .getJSON(
+          "https://api.flickr.com/services/rest/?&method=flickr.photos.search&api_key=" +
+            api_key +
+            "&user_id=" +
+            "&text=" +
+            ($("#text-search").val() == "" ? "" : $("#text-search").val()) +
+            "&per_page=20" +
+            "&page=" +
+            num_pagina +
+            "&format=json&nojsoncallback=1"
+        )
+        .done(data => {
+          return data;
+        });
     }
     /*function search_pexels(hashtag="show") {
       console.log("Realiza busqueda todas las fotos de Instagram");
@@ -43,13 +44,11 @@ document.addEventListener(
       })
     }*/
 
-    function search(){
-      search_flickr()
-      .then(data=>{
-        console.log(data)
-          show_pictures([...data.photos.photo])
-        
-      })
+    function search() {
+      search_flickr().then(data => {
+        console.log(data);
+        show_pictures([...data.photos.photo]);
+      });
     }
 
     function show_pictures(info) {
@@ -66,20 +65,19 @@ document.addEventListener(
           item.id +
           "_" +
           item.secret +
-          "_m.jpg";
-        var urlOriginal =
-          "https://farm" +
-          item.farm +
-          ".staticflickr.com/" +
-          item.server +
-          "/" +
-          item.id +
-          "_" +
-          item.secret +
-          "_c.jpg";
+          "_z.jpg";
+        
         console.debug(url);
         $("#collect-pictures").append(
-          "<div class='eachPic'>"+'<img src="' + url + '" class="imagen" ' + '"/>' + "<button>" + "<i class='far fa-heart'></i>" + "</button>" +" </div>"
+          "<div class='eachPic'>" +
+            '<img src="' +
+            url +
+            '" class="imagen" ' +
+            '"/>' +
+            "<button class='fav-btn'>" +
+            "<i class='far fa-heart'></i>" +
+            "</button>" +
+            " </div>"
         );
       }
       /*$('html, body').animate({
@@ -87,9 +85,47 @@ document.addEventListener(
       }, 1000); */
     }
 
-    
     console.log("IronGenerator JS imported successfully!");
-
+    $("body").on("click",".fav-btn",(e)=>{
+      
+        console.log("click ")
+        var path = $(e.currentTarget).parent().find("img").prop("src")
+        $.ajax({
+          contentType: 'application/json',
+          dataType: 'json',
+          type: "POST",
+          url: "/pictures/add",
+          data: JSON.stringify({ "path": `${path}` }),
+        });
+      
+    })
+    $("body").on("click",".add-album i",(e)=>{
+      console.log("click  en add album")
+      $.ajax({
+        type: "GET",
+        url: "/albums/add",
+      })
+      .done(album=>{
+        var a = album.album[0]
+        $("#flex-albums").append("<a href=/"+`${a._id}`+"/pictures><div class=album><h5>"+`${a.name}`+"</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>")
+        $("#flex-albums").append($(e.currentTarget).parent())
+      })
+    
+  })
+    $("body").on("click",".delete-pic-btn",(e)=>{
+      
+      console.log("click ")
+      var path = $(e.currentTarget).parent().find("img").prop("src")
+      var albumId= $("#album-pics").find("#albumId").text()
+      $.ajax({
+        contentType: 'application/json',
+        dataType: 'json',
+        type: "POST",
+        url: "/pictures/remove",
+        data: JSON.stringify({ "path": `${path}`,"albumId":`${albumId}` }),
+      });
+    
+  })
     
 
     $("#btn-explore").click(() => {

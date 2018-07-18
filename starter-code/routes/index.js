@@ -7,12 +7,20 @@ const Picture = require("../models/Picture")
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
+const Album = require('../models/Album')
 /* GET home page */
 router.get('/explore',ensureLoggedIn("/auth/login"), (req, res, next) => {
-  Picture.find().sort({updated_at: 1}).then((Pictures)=>{
-    res.render('explore',{Pictures});
-  })
+  Picture.find().sort({updated_at: -1}).then((Pictures)=>{
+    User.findById(req.user._id).populate('albums').then(user=>{
+      const albums = user.albums;
+      console.log(albums)
+      res.render('explore',{Pictures,albums});
 
+
+    })
+
+  })
+  
 });
 
 router.get('/', ensureLoggedIn("/auth/login"),(req, res, next) => {

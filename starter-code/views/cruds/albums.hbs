@@ -1,12 +1,21 @@
-<div id="flex-albums">
+<div class="margin-top" id="flex-albums">
     {{#each albums}}
+    <a href="/{{_id}}/pictures">
     <div class="album">
         <h5>{{name}}</h5>
         <img src="https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg"
             alt="">
     </div>
+    </a>
+    
 
     {{/each}}
-
+    <div class="add-album">
+        
+           
+                <i class="fas fa-plus-circle"></i>
+            
+        
+    </div>
 
 </div>
