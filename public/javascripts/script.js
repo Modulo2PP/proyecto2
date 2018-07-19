@@ -110,6 +110,7 @@ document.addEventListener(
       }, 1000); */
     }
 
+
     console.log("IronGenerator JS imported successfully!");
     $("body").on("click", ".fav-btn", e => {
       console.log("click en fav");
@@ -200,6 +201,18 @@ document.addEventListener(
               data: JSON.stringify({ name: `${name}`, albumId: `${albumId}` })
             });
           }
+        }
+      });
+    });
+
+    $("body").on("click", "#text-search", e => {
+      var previousName = $(".album-name-input").val();
+      var albumId = $("#album-pics")
+        .find("#albumId")
+        .text();
+      $("body").on("keypress", "#text-search", e => {
+        if (e.which == 13) {
+          $("#btn-search").trigger("click")
         }
       });
     });

@@ -325,6 +325,8 @@ img {
   flex-direction: row;
   justify-content: flex-start;
   margin: 120px 35px; }
+  .flex-albums a {
+    color: #fda809; }
   .flex-albums .add-album {
     display: flex;
     vertical-align: middle;
