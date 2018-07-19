@@ -109,17 +109,27 @@ router.get(
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     var id = req.params.albumId;
-    Album.findById(id)
-      .populate("pictures")
-      .then(a => {
-        let album = { name: a.name, _id: a._id };
-        console.log(a)
-        res.render("cruds/pictures", { pictures: a.pictures, album });
-      });
+    User.findById(req.user._id).populate('albums').then(user=>{
+      const albums = user.albums;
+      Album.findById(id)
+        .populate("pictures")
+        .then(a => {
+          let album = {
+            name: a.name,
+            _id: a._id
+          };
+          console.log(a)
+          res.render("cruds/pictures", {
+            pictures: a.pictures,
+            album,
+            albums
+          });
+        });
   }
 );
-
-router.get("/albums/add", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  });
+  
+  router.get("/albums/add", ensureLoggedIn("/auth/login"), (req, res, next) => {
   Album.create([{ name: "Unnamed" }])
     .then(a => {
       console.log("Album added");

@@ -11,11 +11,21 @@
             <div>
                 <img src="{{path}}" alt="">
             </div>
+            <div  class="btn-generales-fotos">
+                <button class="delete-pic-btn">
+                    <i class="far fa-trash-alt"></i>
 
-            <button class="delete-pic-btn">
-                <i class="far fa-trash-alt"></i>
+                </button>
+                <button class="fav-btn eachPhoto-btn">
+                    <i class="far fa-heart"></i>
+                </button>
 
-            </button>
+                <select class="choose-album eachPhoto-btn" name="select">
+                    {{#each ../albums}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
         {{/each}}
     </div>
