@@ -2,13 +2,15 @@
 body{
     button:focus,input:focus,#btn-search { outline: none; }
 }
+//'http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg'
 .body-auth
 {
-    background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
+    background: url("https://images2.alphacoders.com/175/thumb-1920-175470.jpg") fixed;
     background-size: cover;
-    padding: 0;
+    padding: 20px;
     margin: 0;
     height: 100vh;
+    
 }
 .margin-top{
 margin-top:60px;
@@ -360,8 +362,8 @@ img{
   max-height: 200px;
 }
 #navPic{
-    width: 45px;
-   
+    width: 50px;
+    height: 50px;
 }
 
 #userInfo{
@@ -421,9 +423,12 @@ img{
   height: calc(100vh - 60px);
   display:flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color:  whitesmoke
+  color:  whitesmoke;
+h1{
+    margin-top:100px;
+    
+}
 
 }
 #home h1{
@@ -581,7 +586,7 @@ img{
     color:rgb(194, 22, 22);
     font-size: 14px;
 }
-#logo{
+#logo,.out-logo{
     font-family: 'Roboto', sans-serif; 
     font-size:30px;
 }
@@ -589,4 +594,23 @@ img{
 .non-flex{
     display: block;
 
+}
+
+.out-logo{
+    color: #ff8700;
+
+}
+.out-logo:focus{
+    border:0;
+}
+
+
+::-webkit-input-placeholder {
+    color: white;
+}
+:-moz-placeholder {
+  color: white;
+}
+.a-out-logo:hover{
+    border:0
 }

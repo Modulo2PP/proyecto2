@@ -23,6 +23,7 @@
 </head>
 
 <body>
+ 
   {{#if user}}
   <nav class="navbar navbar-expand-lg navbar-light " id="barraNavegacion">
     <a class="navbar-brand" id="collectr" href="/"><p id="logo">CollectR</p></a>
@@ -46,7 +47,7 @@
           </li>
         </ul>
         <ul id="userInfo">
-          <a href="/userinfo"><li id="navPic"><img src={{user.picPath}} alt=""></li></a>
+          <a href="/userinfo"><li id="navPic" style="background-image:url('{{user.picPath}}');background-size:cover;"><!--<img src={{user.picPath}} alt="">--></li></a>
           <li class="nav-item nav-link disabled" id="nav-user">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
