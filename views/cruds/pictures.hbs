@@ -6,27 +6,27 @@
     <div class="flex-Photos">
         {{#each pictures}}
 
-        <div class="pic-card">
+        <div class="pic-card non-flex">
 
             <div>
                 <img src="{{path}}" alt="">
             </div>
-            <div  class="btn-generales-fotos">
                 <button class="delete-pic-btn">
                     <i class="far fa-trash-alt"></i>
 
                 </button>
-                <button class="fav-btn eachPhoto-btn">
-                    <i class="far fa-heart"></i>
-                </button>
+                <div class="margin-left">
+                    <button class="fav-btn eachPhoto-btn">
+                        <i class="far fa-heart"></i>
+                    </button>
 
-                <select class="choose-album eachPhoto-btn" name="select">
-                    {{#each ../albums}}
-                    <option value="{{_id}}">{{name}}</option>
-                    {{/each}}
-                </select>
+                    <select class="choose-album eachPhoto-btn" name="select">
+                        {{#each ../albums}}
+                        <option value="{{_id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
             </div>
-        </div>
         {{/each}}
     </div>
 </div>

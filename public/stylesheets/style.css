@@ -467,4 +467,7 @@ img {
   color: #c21616;
   font-size: 14px; }
 
+.non-flex {
+  display: block; }
+
 /*# sourceMappingURL=style.css.map */
