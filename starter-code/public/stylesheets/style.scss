@@ -378,7 +378,7 @@ img{
 
 }
 
-#flex-albums{
+.flex-albums{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -541,4 +541,11 @@ button:focus { outline: none; }
 
  #edit-profile{
     margin-top:90px;
+}
+
+.otherUser{
+    > *{
+    color: #ff8700;
+    
+}
 }

@@ -10,11 +10,11 @@
         <div class="datos-personal-info">
             <div class="campos-info">
                 <label class="labels">Email:</label>
-                <p class="datos">{{user.email}}</p>
+                <p class="datos">{{otherUser.email}}</p>
             </div>
             <div>
                 <label class="labels">Username:</label>
-                <p class="datos">{{user.username}}</p>
+                <p class="datos">{{otherUser.username}}</p>
             </div>
         </div>
 
@@ -23,3 +23,23 @@
 </div>
 
 <hr>
+
+<div class="margin-top flex-albums">
+        {{#each otherUser.albums}}
+    <div class="album-container">
+        <p class="albumId d-none">"{{this._id}}"</p>
+        <a href="/{{this._id}}/otheruser/pictures">
+            <div class="album">
+
+                <h5>{{name}}</h5>
+                <img src="https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg"
+                    alt="">
+            </div>
+        </a>
+    </div>
+
+
+
+    {{/each}}    
+
+</div>

@@ -313,23 +313,23 @@ img {
   width: 200px;
   margin: 0 30px; }
 
-#flex-albums {
+.flex-albums {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
   margin: 80px 35px; }
-  #flex-albums .add-album {
+  .flex-albums .add-album {
     display: flex;
     vertical-align: middle;
     margin-top: 20px; }
-    #flex-albums .add-album .fa-plus-circle:before {
+    .flex-albums .add-album .fa-plus-circle:before {
       background: rgba(123, 199, 9, 0.603);
       border-radius: 50px; }
-    #flex-albums .add-album i {
+    .flex-albums .add-album i {
       font-size: 40px;
       height: 50px; }
-  #flex-albums .delete-album-btn {
+  .flex-albums .delete-album-btn {
     background: #be0505;
     border-radius: 100px;
     width: 70px;
@@ -429,6 +429,7 @@ img {
   flex-wrap: wrap; }
   .datos-personal-info > * {
     display: inline-block; }
+
 .fav-btn2, .fav-btn {
   width: 70px; }
 
@@ -437,5 +438,8 @@ button:focus {
 
 #edit-profile {
   margin-top: 90px; }
+
+.otherUser > * {
+  color: #ff8700; }
 
 /*# sourceMappingURL=style.css.map */
