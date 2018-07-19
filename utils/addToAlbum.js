@@ -4,7 +4,7 @@ const Picture = require("../models/Picture")
 module.exports = (pictureId,albumId,picturePath)=>{
     Album.findById(albumId)
     .then(a=>{
-        a.pictures.push(pictureId)
+        a.pictures.unshift(pictureId)
         
         Album.findByIdAndUpdate(albumId,{pictures:a.pictures,cover:picturePath})
         .then((a)=>{
