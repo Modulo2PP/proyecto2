@@ -30,13 +30,13 @@ router.post(
         Picture.findByIdAndUpdate(pic[0]._id, [{users:pic[0].users.push(req.user.username) ,lastUser:req.user.username }])
         .then((p)=>{
           console.log("primera cond")
-          addToAlbum(p._id,req.user.albums[0])
+          addToAlbum(p._id,req.user.albums[0],p.path)
           addToAlbum(p._id, req.body.albumId,p.path);
         })
       } else {
         Picture.create([{ path: req.body.path, users:[req.user.username], lastUser: req.user.username}]).then(pi => {
           console.log("foto"+pi)
-          addToAlbum(pi[0]._id,req.user.albums[0])
+          addToAlbum(pi[0]._id,req.user.albums[0],pi[0].path)
 
           addToAlbum(pi[0]._id, req.body.albumId,pi[0].path);
         })
