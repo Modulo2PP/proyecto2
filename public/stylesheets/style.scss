@@ -1,5 +1,7 @@
 
-
+body{
+    button:focus,input:focus,#btn-search { outline: none; }
+}
 .body-auth
 {
     background: url('http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg') fixed;
@@ -255,7 +257,7 @@ border-bottom-left-radius: 4px;
 
 .collect-search{
   background-image: url("/images/search-bgn.jpg");
-  height: 70vh;
+  height: calc(100vh - 60px);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -347,7 +349,10 @@ img{
 }
 .results{
   text-align: center;
-  margin:20px
+  margin:20px;
+  h2{
+    margin-top:80px;
+  }
 }
 .imagen{
   width: 250px;
@@ -537,7 +542,7 @@ img{
     
 
 }
-button:focus { outline: none; }
+
 
  #edit-profile{
     margin-top:90px;

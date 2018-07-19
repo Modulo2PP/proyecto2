@@ -43,17 +43,37 @@ document.addEventListener(
         return data
       })
     }*/
-
+    function search_recent() {
+      console.log("entra")
+      $.getJSON(
+        "https://api.flickr.com/services/rest/?&method=flickr.photos.getRecent&api_key=" +
+          api_key +
+          "&user_id=" +
+          "&per_page=20" +
+          "&page=" +
+          num_pagina +
+          "&format=json&nojsoncallback=1"
+        
+      )
+      .done(data=>{
+          console.log(data)
+        show_pictures([...data.photos.photo])
+      })
+    }
     function search() {
-      search_flickr().then(data => {
-        console.log(data);
-        show_pictures([...data.photos.photo]);
-      });
+        if ($("#text-search").val() == "") {
+          search_recent()
+          
+        } else {
+          search_flickr()
+          .then(data=>{
+            show_pictures([...data.photos.photo])
+          })
+        }
+    
     }
 
     function show_pictures(info) {
-      $("#collect-pictures").empty();
-
       for (var i = 0; i < info.length; i++) {
         var item = info[i];
         var url =
@@ -86,62 +106,73 @@ document.addEventListener(
     }
 
     console.log("IronGenerator JS imported successfully!");
-    $("body").on("click",".fav-btn",(e)=>{
-      
-        console.log("click en fav")
-        var path = $(e.currentTarget).parent().parent().find("img").prop("src")
-        var albumId = $(e.currentTarget).parent().find('.choose-album').val()
-        $.ajax({
-          contentType: 'application/json',
-          dataType: 'json',
-          type: "POST",
-          url: "/pictures/add",
-          data: JSON.stringify({ "path": `${path}`, "albumId": `${albumId}`  }),
-        })
-        .done(()=>{
-          console.log("Picture added to album")
-          $(e.currentTarget).css({color:"red"})
-        })
-      
-    })
-
-    $("body").on("click",".fav-btn2",(e)=>{
-      
-      console.log("click en fav")
-      var path = $(e.currentTarget).parent().find("img").prop("src")
-      console.log(path)
-      var albumId = $(e.currentTarget).parent().find('.choose-album').val()
-      console.log(albumId)
+    $("body").on("click", ".fav-btn", e => {
+      console.log("click en fav");
+      var path = $(e.currentTarget)
+        .parent()
+        .parent()
+        .find("img")
+        .prop("src");
+      var albumId = $(e.currentTarget)
+        .parent()
+        .find(".choose-album")
+        .val();
       $.ajax({
-        contentType: 'application/json',
-        dataType: 'json',
+        contentType: "application/json",
+        dataType: "json",
         type: "POST",
         url: "/pictures/add",
-        data: JSON.stringify({ "path": `${path}`  }),
-      })
-      .then(()=>{
-        console.log("Picture added to album")
-        $(e.currentTarget).css({color:"red"})
+        data: JSON.stringify({ path: `${path}`, albumId: `${albumId}` })
+      }).done(() => {
+        console.log("Picture added to album");
+        $(e.currentTarget).css({ color: "red" });
+      });
+    });
 
-      })
-    
-  })
+    $("body").on("click", ".fav-btn2", e => {
+      console.log("click en fav");
+      var path = $(e.currentTarget)
+        .parent()
+        .find("img")
+        .prop("src");
+      console.log(path);
+      var albumId = $(e.currentTarget)
+        .parent()
+        .find(".choose-album")
+        .val();
+      console.log(albumId);
+      $.ajax({
+        contentType: "application/json",
+        dataType: "json",
+        type: "POST",
+        url: "/pictures/add",
+        data: JSON.stringify({ path: `${path}` })
+      }).then(() => {
+        console.log("Picture added to album");
+        $(e.currentTarget).css({ color: "red" });
+      });
+    });
 
-    $("body").on("click",".add-album i",(e)=>{
-      console.log("click  en add album")
+    $("body").on("click", ".add-album i", e => {
+      console.log("click  en add album");
       $.ajax({
         type: "GET",
         url: "/albums/add"
       }).done(album => {
         var a = album.album[0];
-        console.log(a)
+        console.log(a);
 
         $("#flex-albums").append(
-          "<div class='album-container'>"+'<p class="albumId d-none">'+`${a._id}`+'</p><a href=/"' +
+          "<div class='album-container'>" +
+            '<p class="albumId d-none">' +
+            `${a._id}` +
+            '</p><a href=/"' +
             `${a._id}` +
             "/pictures><div class='album'><h5>" +
             `${a.name}` +
-            "</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>"+'<button class="delete-album-btn"><i class="far fa-trash-alt"></i></button>'+"</div>"
+            "</h5><img src='https://previews.123rf.com/images/themoderncanvas/themoderncanvas1602/themoderncanvas160200091/52803071-fotos-icono-digital-%C3%81lbum-de-fotos-se%C3%B1al-galer%C3%ADa-de-im%C3%A1genes-de-s%C3%ADmbolos-blanco-icono-de-la-galer%C3%ADa-de-im%C3%A1genes-so.jpg' alt=''> </div> </a>" +
+            '<button class="delete-album-btn"><i class="far fa-trash-alt"></i></button>' +
+            "</div>"
         );
         $("#flex-albums").append($(e.currentTarget).parent());
       });
@@ -177,8 +208,8 @@ document.addEventListener(
       var albumId = $("#album-pics")
         .find("#albumId")
         .text();
-        console.log(path)
-        console.log(albumId)
+      console.log(path);
+      console.log(albumId);
       $.ajax({
         contentType: "application/json",
         dataType: "json",
@@ -186,7 +217,7 @@ document.addEventListener(
 
         url: "/pictures/remove",
         data: JSON.stringify({ path: `${path}`, albumId: `${albumId}` })
-      }).done((a) => {
+      }).done(a => {
         console.log("borrada");
         $(e.currentTarget)
           .parent()[0]
@@ -201,7 +232,7 @@ document.addEventListener(
           .parent()
           .is(":first-child")
       ) {
-      }else{
+      } else {
         var albumId = $(e.currentTarget)
           .parent()
           .find("p")
@@ -232,14 +263,33 @@ document.addEventListener(
       //$("#nav-options").find("li").css({border:"1px solid orange"})
     });
 
+    $(window).scroll(function() {
+      
+      if (
+        $(window).scrollTop() >=
+        $(document).height() - $(window).height() - 3
+      ) {
+        console.log("scroll down");
+        num_pagina++;
+        search();
+      }
+    });
+
     $("#btn-search").click(() => {
       num_pagina = 1;
+      if ($("#text-search").val() == "") return;
       $("#collect-pictures").empty();
 
       search();
+      $("html, body").animate(
+        {
+          scrollTop: $(".results").offset().top
+        },
+        1000
+      );
     });
 
-    $("#btn-more").on("click", function(e) {
+    /*$("#btn-more").on("click", function(e) {
       console.log("Click en #btn-more");
       $("#collect-pictures").empty();
       num_pagina++;
@@ -248,7 +298,7 @@ document.addEventListener(
         console.log(num_pagina);
         show_recent();
       }
-    });
+    });*/
   },
   false
 );

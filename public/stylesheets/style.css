@@ -1,3 +1,6 @@
+body button:focus, body input:focus, body #btn-search {
+  outline: none; }
+
 .body-auth {
   background: url("http://farm3.staticflickr.com/2832/12303719364_c25cecdc28_b.jpg") fixed;
   background-size: cover;
@@ -212,7 +215,7 @@ form.login a:hover {
 
 .collect-search {
   background-image: url("/images/search-bgn.jpg");
-  height: 70vh;
+  height: calc(100vh - 60px);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -288,6 +291,8 @@ img {
 .results {
   text-align: center;
   margin: 20px; }
+  .results h2 {
+    margin-top: 80px; }
 
 .imagen {
   width: 250px;
@@ -432,9 +437,6 @@ img {
 
 .fav-btn2, .fav-btn {
   width: 70px; }
-
-button:focus {
-  outline: none; }
 
 #edit-profile {
   margin-top: 90px; }
