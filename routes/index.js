@@ -43,10 +43,18 @@ router.post("/userinfo",upload.single('file'), (req,res,next) =>{
   else if(password){
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-    const picPath = "/uploads/"+req.file.filename
-  User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass, picPath}).then(()=>{
+  User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass}).then(()=>{
    res.redirect("/");
   })
+}
+
+else if (password && req.file){
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(password, salt);
+  const picPath = "/uploads/"+req.file.filename
+User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass, picPath}).then(()=>{
+ res.redirect("/");
+})
 }
   else if(req.file){
     const picPath = "/uploads/"+req.file.filename
