@@ -32,20 +32,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav" id="usuario">
         <ul id="nav-options">
-          <li class="nav-item active">
+          <li class="nav-item active e">
             <a class="nav-link" href="/explore" id="btn-explore">Explore
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item c">
             <a class="nav-link" href="/collect" id="btn-collect">Collect</a>
           </li>
-            <li class="nav-item">
+            <li class="nav-item m">
             <a class="nav-link" href="/mycollection" id="btn-collect">My Collection</a>
           </li>
         </ul>
         <ul id="userInfo">
-          <a href="/userinfo"><li id="navPic"><img src="http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png" alt=""></li></a>
+          <a href="/userinfo"><li id="navPic"><img src={{user.picPath}} alt=""></li></a>
           <li class="nav-item nav-link disabled" id="nav-user">
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -58,19 +58,19 @@
                   <li>
                     <div class="navbar-login">
                       <div class="row">
-                        <div class="col-lg-4">
+                        <!--<div class="col-lg-4">
                           <p class="text-center">
                             <span class="glyphicon glyphicon-user icon-size"></span>
                           </p>
-                        </div>
+                        </div>-->
                         <div class="col-lg-8">
                           <p class="text-left">
-                            <strong>Nombre Apellido</strong>
+                            <strong>{{user.username}}</strong>
                           </p>
-                          <p class="text-left small">correoElectronico@email.com</p>
-                          <p class="text-left">
+                          <p class="text-left small">{{user.email}}</p>
+                         <!-- <p class="text-left">
                             <a href="#" class="btn btn-primary btn-block btn-sm">Actualizar Datos</a>
-                          </p>
+                          </p>-->
                         </div>
                       </div>
                     </div>

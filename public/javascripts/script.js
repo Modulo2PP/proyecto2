@@ -44,7 +44,7 @@ document.addEventListener(
       })
     }*/
     function search_recent() {
-      console.log("entra")
+      console.log("entra");
       $.getJSON(
         "https://api.flickr.com/services/rest/?&method=flickr.photos.getRecent&api_key=" +
           api_key +
@@ -53,24 +53,19 @@ document.addEventListener(
           "&page=" +
           num_pagina +
           "&format=json&nojsoncallback=1"
-        
-      )
-      .done(data=>{
-          console.log(data)
-        show_pictures([...data.photos.photo])
-      })
+      ).done(data => {
+        console.log(data);
+        show_pictures([...data.photos.photo]);
+      });
     }
     function search() {
-        if ($("#text-search").val() == "") {
-          search_recent()
-          
-        } else {
-          search_flickr()
-          .then(data=>{
-            show_pictures([...data.photos.photo])
-          })
-        }
-    
+      if ($("#text-search").val() == "") {
+        search_recent();
+      } else {
+        search_flickr().then(data => {
+          show_pictures([...data.photos.photo]);
+        });
+      }
     }
 
     function show_pictures(info) {
@@ -159,14 +154,14 @@ document.addEventListener(
         type: "GET",
         url: "/albums/add"
       }).done(album => {
-        var a = album.album[0];
+        var a = album.album;
         console.log(a);
 
-        $("#flex-albums").append(
+        $(".flex-albums").append(
           "<div class='album-container'>" +
             '<p class="albumId d-none">' +
             `${a._id}` +
-            '</p><a href=/"' +
+            "</p><a href=/" +
             `${a._id}` +
             "/pictures><div class='album'><h5>" +
             `${a.name}` +
@@ -174,7 +169,7 @@ document.addEventListener(
             '<button class="delete-album-btn"><i class="far fa-trash-alt"></i></button>' +
             "</div>"
         );
-        $("#flex-albums").append($(e.currentTarget).parent());
+        $(".flex-albums").append($(e.currentTarget).parent());
       });
     });
     $("body").on("click", ".album-name-input", e => {
@@ -224,6 +219,24 @@ document.addEventListener(
           .remove();
       });
     });
+   var prevPath = window.location.pathname;
+
+    setInterval( ()=> {
+      var pathname = window.location.pathname;
+      if(prevPath!==pathname){
+        console.log("click en nav item")
+        switch (pathname){
+          case "/explore":$(".e").addClass("active");$(".nav-item").removeClass("active");break;
+          case "/collect":$(".c").addClass("active");$(".nav-item").removeClass("active");break;
+          case "/mycollection":$(".m").addClass("active");$(".nav-item").removeClass("active");break;
+          default:$(".nav-item").removeClass("active")
+  
+        }
+      }
+      
+      
+
+    },100);
 
     $("body").on("click", ".delete-album-btn", e => {
       console.log("click en borrar album");
@@ -264,7 +277,6 @@ document.addEventListener(
     });
 
     $(window).scroll(function() {
-      
       if (
         $(window).scrollTop() >=
         $(document).height() - $(window).height() - 3
@@ -303,7 +315,6 @@ document.addEventListener(
   false
 );
 
-
 /* $("body").on("click", ".otherUser", e => {
   var userName = $(e.currentTarget).text()
   $.ajax({
@@ -315,5 +326,3 @@ document.addEventListener(
   });
 });
  */
-
- 

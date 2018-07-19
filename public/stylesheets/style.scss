@@ -554,3 +554,13 @@ img{
     
 }
 }
+
+.navbar-default .navbar-nav > .active{
+    color: #000;
+    background: #d65c14;
+}
+ .navbar-nav #nav-options > .active > a,
+ .navbar-nav #nav-options > .active > a:hover,
+ .navbar-nav #nav-options > .active > a:focus {
+    border-bottom:1px solid #d65c14;
+}

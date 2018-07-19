@@ -129,14 +129,18 @@ router.get("/albums/add", ensureLoggedIn("/auth/login"), (req, res, next) => {
         console.log(u.albums);
 
         User.findByIdAndUpdate(req.user._id, { albums: u.albums }).then(() => {
+          res.json({ album: a[0] });
+
           console.log("album added to user");
         });
       });
-      res.json({ album: a });
+      console.log("album enviado")
+
     })
     .catch(() => {
       console.log("Error adding album ");
     });
+
 });
 
 router.post(
@@ -156,16 +160,21 @@ router.post(
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     console.log(req.body.albumId)
-    Album.findByIdAndRemove(req.body.albumId)
+    var albumId= req.body.albumId
+    Album.findByIdAndRemove(albumId)
     .then(
-      ()=> {
+      (a)=> {
         console.log("Album successfully removed");
         res.json({ album: "hola"});
 
-      }
-    );
-  }
-);
+      })
+      .catch(()=>{
+        console.log("No se ha podido borrar el album")
+      })
+
+  })
+
+
 
 
 router.get(

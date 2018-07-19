@@ -14,7 +14,7 @@ router.get('/explore',ensureLoggedIn("/auth/login"), (req, res, next) => {
     User.findById(req.user._id).populate('albums').then(user=>{
       const albums = user.albums;
       
-      res.render('explore',{Pictures,albums});
+      res.render('explore',{Pictures,albums,pestaña:"explore"});
     })
 
   })
