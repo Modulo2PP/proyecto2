@@ -442,4 +442,10 @@ button:focus {
 .otherUser > * {
   color: #ff8700; }
 
+.ruta-album {
+  margin: 100px auto 0;
+  text-align: center;
+  color: #ff8700;
+  font-weight: 550; }
+
 /*# sourceMappingURL=style.css.map */
