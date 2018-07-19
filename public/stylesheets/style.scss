@@ -292,6 +292,7 @@ height: 70px;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top:80px;
 
 }
 
@@ -301,7 +302,10 @@ height: 70px;
     width: 75%;
     margin: 20px 0 ;
     text-align: center;
-    border-bottom: 1px solid rgb(156, 155, 155);
+    border: 1px solid rgb(156, 155, 155);
+    border-radius: 5px;
+    box-shadow: 5px 2px #ff8700;
+
   > *{
     margin:10px
   }
@@ -365,6 +369,11 @@ img{
     width: 50px;
     height: 50px;
 }
+.avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+}
 
 #userInfo{
     display: flex;
@@ -383,6 +392,16 @@ img{
     text-align: center;
     width: 200px;
     margin: 0 30px;
+    border: 1px solid rgb(156, 155, 155);
+    border-radius: 5px;
+    
+    box-shadow: 5px 2px #ff8800ab;
+
+    img{
+        height: 150px;
+        max-height: 150px;
+        width: 100%;
+    }
 
 }
 
@@ -451,6 +470,9 @@ h1{
      display: flex;
     flex-direction: column;
     text-align: -webkit-center;
+    img{
+        border-radius: 5px;
+    }
     button{
         width:70px;
         background: #272727;
@@ -483,7 +505,7 @@ h1{
     display: flex;
     flex-direction: column;
     text-align: center;
-
+    
     > *{
         margin-top: 10px
     }
@@ -616,4 +638,12 @@ h1{
 }
 .a-out-logo:hover{
     border:0
+}
+
+.otherUser-albums{
+margin:30px;
+text-align: center
+}
+img{
+    border-radius: 5px;
 }

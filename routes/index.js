@@ -55,6 +55,7 @@ else if (password && req.file){
 User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass, picPath}).then(()=>{
  res.redirect("/");
 })
+
 }
   else if(req.file){
     const picPath = "/uploads/"+req.file.filename
@@ -85,7 +86,7 @@ router.get('/otheruser/:userName', ensureLoggedIn("/auth/login"),(req, res, next
   User.find({username:req.params.userName})
   .populate('albums')
   .then((otheruser)=>{
-    console.log(otheruser[0].albums)
+    console.log(otheruser)
     res.render('otherUser', {otherUser: otheruser[0]});
   })
 });

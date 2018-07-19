@@ -99,7 +99,7 @@ document.addEventListener(
             url +
             '" class="imagen" ' +
             '"/>' +
-            "<button class='fav-btn'>" +
+            "<button class='fav-btn2'>" +
             "<i class='far fa-heart'></i>" +
             "</button>" +
             " </div>"
@@ -115,6 +115,7 @@ document.addEventListener(
     $("body").on("click", ".fav-btn", e => {
       console.log("click en fav");
       var path = $(e.currentTarget)
+        .parent()
         .parent()
         .find("img")
         .prop("src");

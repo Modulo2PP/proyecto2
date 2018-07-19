@@ -190,18 +190,19 @@ router.post(
 
 
 router.get(
-  "/:albumId/otheruser/pictures",
+  "/:albumId/:otheruser/pictures",
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
     var id = req.params.albumId;
-    User.findById(req.user._id).populate('albums').then(user=>{
-      const personaje = user.username
+    const otheruserId =req.params.otheruser
+
+    User.findById(otheruserId).populate('albums').then(user=>{
       const albums = user.albums;
     Album.findById(id)
       .populate("pictures")
       .then(a => {
         let album = { name: a.name, _id: a._id };
-          res.render("cruds/otherUserAlbum", { pictures: a.pictures, album, personaje });
+          res.render("cruds/otherUserAlbum", { pictures: a.pictures, album, otherUser:user });
         })
       });
   })
