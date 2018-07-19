@@ -116,7 +116,6 @@ document.addEventListener(
       console.log("click en fav");
       var path = $(e.currentTarget)
         .parent()
-        .parent()
         .find("img")
         .prop("src");
       var albumId = $(e.currentTarget)
