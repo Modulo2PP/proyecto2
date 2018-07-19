@@ -30,8 +30,8 @@ authRoutes.post("/signup",ensureLoggedOut(), (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   const email = req.body.email;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  if (username === "" || password === ""||email=="") {
+    res.render("auth/signup", { message: "Missing credentials" });
     return;
   }
 
@@ -40,6 +40,7 @@ authRoutes.post("/signup",ensureLoggedOut(), (req, res, next) => {
       res.render("auth/signup", { message: "The username already exists" });
       return;
     }
+    
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
@@ -55,14 +56,21 @@ authRoutes.post("/signup",ensureLoggedOut(), (req, res, next) => {
         albums:[a[0]._id]
       });
   
-      newUser.save((err) => {
+      User.create([newUser])
+      .then(u=> {
+         
+          console.log(u[0])
+          req.user=u[0]
+          res.locals.user=u[0]
+          res.redirect("/");
+
+        
+      })
+      .catch(err=>{
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
-        } else {
-          req.user=newUser
-          res.redirect("/");
         }
-      });
+      })
     })
     
   });

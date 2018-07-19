@@ -1,6 +1,16 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
+    var pathname = window.location.pathname;
+      
+    console.log("click en nav item")
+    switch (pathname){
+      case "/explore":$(".nav-item").removeClass("active");$(".e").addClass("active");break;
+      case "/collect":$(".nav-item").removeClass("active");$(".c").addClass("active");console.log("click en c");break;
+      case "/mycollection":$(".nav-item").removeClass("active");$(".m").addClass("active");break;
+      default:$(".nav-item").removeClass("active")
+
+    }
     var num_pagina = 1;
     var parametros = {
       api_key: api_key,
@@ -219,24 +229,11 @@ document.addEventListener(
           .remove();
       });
     });
-   var prevPath = window.location.pathname;
 
-    setInterval( ()=> {
-      var pathname = window.location.pathname;
-      if(prevPath!==pathname){
-        console.log("click en nav item")
-        switch (pathname){
-          case "/explore":$(".e").addClass("active");$(".nav-item").removeClass("active");break;
-          case "/collect":$(".c").addClass("active");$(".nav-item").removeClass("active");break;
-          case "/mycollection":$(".m").addClass("active");$(".nav-item").removeClass("active");break;
-          default:$(".nav-item").removeClass("active")
-  
-        }
-      }
-      
+    
       
 
-    },100);
+    
 
     $("body").on("click", ".delete-album-btn", e => {
       console.log("click en borrar album");

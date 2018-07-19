@@ -360,7 +360,8 @@ img{
   max-height: 200px;
 }
 #navPic{
-    width: 40px;
+    width: 45px;
+   
 }
 
 #userInfo{
@@ -388,7 +389,7 @@ img{
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    margin: 80px 35px;
+    margin: 120px 35px;
     .add-album{
         display: flex;
         vertical-align: middle;
@@ -579,4 +580,8 @@ img{
 .red{
     color:rgb(194, 22, 22);
     font-size: 14px;
+}
+#logo{
+    font-family: 'Roboto', sans-serif; 
+    font-size:30px;
 }
