@@ -33,7 +33,32 @@ router.get('/userinfo',ensureLoggedIn("/auth/login"), (req, res, next) => {
     res.render('user-info', user);
 });
 
-
+router.post("/userinfo",upload.single('file'), (req,res,next) =>{
+  const user = req.user;
+  const {username,email,password,passconfirm}=req.body;
+  console.log(req.file)
+  if (password !=passconfirm ) {
+    res.render("user-info", { message: "Wrong password" ,user});
+  }
+  else if(password){
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+    const picPath = "/uploads/"+req.file.filename
+  User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass, picPath}).then(()=>{
+   res.redirect("/");
+  })
+}
+  else if(req.file){
+    const picPath = "/uploads/"+req.file.filename
+    User.findOneAndUpdate({_id:user},{"username":username,"email":email, picPath}).then(()=>{
+    res.redirect("/");
+  });
+  } else{
+    User.findOneAndUpdate({_id:user},{"username":username,"email":email}).then(()=>{
+      res.redirect("/");
+    });
+  }
+ });
 
 
 router.get('/mycollection', ensureLoggedIn("/auth/login"),(req, res, next) => {
