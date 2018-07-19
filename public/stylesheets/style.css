@@ -452,6 +452,7 @@ img {
 .navbar-nav #nav-options > .active > a:hover,
 .navbar-nav #nav-options > .active > a:focus {
   border-bottom: 1px solid #d65c14; }
+
 .ruta-album {
   margin: 100px auto 0;
   text-align: center;
@@ -461,5 +462,9 @@ img {
 .changeinfo {
   display: flex;
   width: 100%; }
+
+.red {
+  color: #c21616;
+  font-size: 14px; }
 
 /*# sourceMappingURL=style.css.map */
