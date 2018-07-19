@@ -71,8 +71,13 @@ router.get('/mycollection', ensureLoggedIn("/auth/login"),(req, res, next) => {
   })
 });
 
-router.get('/otheruser', ensureLoggedIn("/auth/login"),(req, res, next) => {
-  res.render('otherUser');
+router.get('/otheruser/:userName', ensureLoggedIn("/auth/login"),(req, res, next) => {
+  User.find({username:req.params.userName})
+  .populate('albums')
+  .then((otheruser)=>{
+    console.log(otheruser[0].albums)
+    res.render('otherUser', {otherUser: otheruser[0]});
+  })
 });
 
 module.exports = router;

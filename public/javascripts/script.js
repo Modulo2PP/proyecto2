@@ -302,3 +302,18 @@ document.addEventListener(
   },
   false
 );
+
+
+/* $("body").on("click", ".otherUser", e => {
+  var userName = $(e.currentTarget).text()
+  $.ajax({
+    contentType: "application/json",
+    dataType: "json",
+    type: "POST",
+    url: "/otheruser",
+    data: JSON.stringify({ userName: `${userName}`})
+  });
+});
+ */
+
+ 
