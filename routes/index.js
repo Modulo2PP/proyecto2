@@ -48,10 +48,15 @@ router.post("/userinfo",upload.single('file'), (req,res,next) =>{
    res.redirect("/");
   })
 }
-  else{
-  User.findOneAndUpdate({_id:user},{"username":username,"email":email}).then(()=>{
+  else if(req.file){
+    const picPath = "/uploads/"+req.file.filename
+    User.findOneAndUpdate({_id:user},{"username":username,"email":email, picPath}).then(()=>{
     res.redirect("/");
   });
+  } else{
+    User.findOneAndUpdate({_id:user},{"username":username,"email":email}).then(()=>{
+      res.redirect("/");
+    });
   }
  });
 
