@@ -18,7 +18,7 @@
             
             <select class="choose-album eachPhoto-btn" name="select">
                 {{#each ../albums}}
-                <option value="{{_id}}">{{name}}</option>
+                <option value="{{this._id}}">{{this.name}}</option>
                 {{/each}}
             </select>
 

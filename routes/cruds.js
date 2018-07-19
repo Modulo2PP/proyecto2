@@ -202,7 +202,7 @@ router.get(
       .populate("pictures")
       .then(a => {
         let album = { name: a.name, _id: a._id };
-          res.render("cruds/otherUserAlbum", { pictures: a.pictures, album, otherUser:user });
+          res.render("cruds/otherUserAlbum", { albums,pictures: a.pictures, album, otherUser:user });
         })
       });
   })
