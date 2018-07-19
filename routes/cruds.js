@@ -183,16 +183,15 @@ router.get(
   (req, res, next) => {
     var id = req.params.albumId;
     User.findById(req.user._id).populate('albums').then(user=>{
+      const personaje = user.username
       const albums = user.albums;
     Album.findById(id)
       .populate("pictures")
       .then(a => {
         let album = { name: a.name, _id: a._id };
-        console.log(a)
-        res.render("cruds/otherUserAlbum", { pictures: a.pictures, albums });
+          res.render("cruds/otherUserAlbum", { pictures: a.pictures, album, personaje });
+        })
       });
   })
-}
-);
 
 module.exports = router;

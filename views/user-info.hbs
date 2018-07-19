@@ -1,27 +1,19 @@
 <div class="container" id="edit-profile">
     <h1>Edit Profile</h1>
   	<hr>
-	<div class="row">
+        <form action="/userinfo" method="post" enctype="multipart/form-data" class="changeinfo">
       <!-- left column -->
-      <div class="col-md-3">
         <div class="text-center">
           <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          
-          <input type="file" class="form-control">
+          <input type="file" name= "file"class="form-control">
         </div>
-      </div>
+
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <strong> Here you can change your Info</strong>
-        </div>
         <h3>Personal info</h3>
 
 
-        <form action="/userinfo" method="post">
 
           <div class="form-group">
             <label class="col-lg-8 control-label">Email:</label>

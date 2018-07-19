@@ -29,25 +29,22 @@ router.get('/collect', ensureLoggedIn("/auth/login"),(req, res, next) => {
 });
 
 router.get('/userinfo',ensureLoggedIn("/auth/login"), (req, res, next) => {
-    res.render('user-info');
+  const user = req.user
+    res.render('user-info', user);
 });
 
-
-router.post("/userinfo",(req,res,next) =>{
+router.post("/userinfo",upload.single('file'), (req,res,next) =>{
   const user = req.user;
   const {username,email,password,passconfirm}=req.body;
-  // console.log(req.file)
-  // const imgPath = req.file;
-  // if(imgPath==null || imgPath==undefined){
-  //   imgPath="https://static.vix.com/es/sites/default/files/styles/large/public/btg/universos-2.jpg?itok=IpTWZVlD"
-  // }
+  console.log(req.file)
   if (password !=passconfirm ) {
     res.render("user-info", { message: "Wrong password" ,user});
   }
   else if(password){
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
-  User.findOneAndUpdate({_id:user},{"username":username,"email": email,"password":hashPass}).then(()=>{
+    const picPath = "/uploads/"+req.file.filename
+  User.findByIdAndUpdate(req.user._id,{"username":username,"email": email,"password":hashPass, picPath}).then(()=>{
    res.redirect("/");
   })
 }
